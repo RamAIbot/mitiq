@@ -8,7 +8,7 @@ in the top right corner -->
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Contributing to Mitiq &#8212; Mitiq 0.15.0dev documentation</title>
+    <title>Contributing to Mitiq &#8212; Mitiq 0.17.0dev documentation</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -427,7 +427,7 @@ docstrings with</p>
 <li><p>Please get familiar with <a class="reference external" href="https://www.python.org/dev/peps/pep-0008/">PEP 8</a> (code)
 and <a class="reference external" href="https://www.python.org/dev/peps/pep-0257/">PEP 257</a> (docstrings) guidelines.</p></li>
 <li><p>Use annotations for type hints in the objects’ signature.</p></li>
-<li><p>Write <a class="reference external" href="https://google.github.io/styleguide/pyguide.html#doc-function-args">google-style docstrings</a>.</p></li>
+<li><p>Write <a class="reference external" href="https://google.github.io/styleguide/pyguide.html#383-functions-and-methods">google-style docstrings</a>.</p></li>
 </ul>
 <p>We use <a class="reference external" href="https://black.readthedocs.io/en/stable/index.html">Black</a> and <code class="docutils literal notranslate"><span class="pre">flake8</span></code> to automatically
 lint the code and enforce style requirements as part of the CI pipeline. You can run these style
@@ -454,12 +454,15 @@ default of 88 (this is configured in the <a class="reference external" href="htt
 </div>
 <div class="section" id="proposing-a-new-feature-to-mitiq">
 <h2>Proposing a new feature to Mitiq<a class="headerlink" href="#proposing-a-new-feature-to-mitiq" title="Permalink to this headline">#</a></h2>
-<p>If you are interested in adding a larger new feature or functionality to Mitiq, please check out our
-Mitq enhancement proposal (MEP) template <a class="reference external" href="https://github.com/unitaryfund/mitiq/blob/master/docs/mep/0000-feature-proposal-TEMPLATE.md"><code class="docutils literal notranslate"><span class="pre">docs/mep/0000-feature-proposal-TEMPLATE.md</span></code></a>. To help facilitate
-discussion about the feature you would like to add, make a copy of the template and increment the proposal
-number and change <code class="docutils literal notranslate"><span class="pre">feature-proposal-TEMPLATE</span></code> to a short description of what you are proposing.
-Please fill out any relevant sections of that template as best you can and we can discuss in
-both PR threads as well as on the <a class="reference external" href="http://discord.unitary.fund">discord</a>.</p>
+<p>If you are interested in adding a larger new feature or other functionality to Mitiq, please make a copy of our
+Request For Comments (RFC) <a class="reference external" href="https://docs.google.com/document/d/1adomheXpbqp4YIBFQ49IsAJzuJKWyr75GRO1NeWg0Fo/">template</a>
+and fill out the details of your enhancement proposal. Take a look at
+<a class="reference external" href="https://github.com/unitaryfund/mitiq/issues?q=is%3Aissue+is%3Aclosed+RFC">previous RFCs</a> for examples on how to fill
+out your proposal. Once you have completed your proposal, then please
+<a class="reference external" href="https://github.com/unitaryfund/mitiq/issues/new?assignees=&amp;labels=feature-request&amp;template=feature_request.md&amp;title=">create a feature request issue</a>
+and add a link to your proposal document (make sure to enable commenting!). For any part of the template that you
+weren’t able to complete please mention that in the PR description and/or discuss with us on
+<a class="reference external" href="http://discord.unitary.fund">discord</a>.</p>
 </div>
 <div class="section" id="code-of-conduct">
 <h2>Code of conduct<a class="headerlink" href="#code-of-conduct" title="Permalink to this headline">#</a></h2>

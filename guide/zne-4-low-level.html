@@ -8,7 +8,7 @@ in the top right corner -->
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>What happens when I use ZNE? &#8212; Mitiq 0.15.0dev documentation</title>
+    <title>What happens when I use ZNE? &#8212; Mitiq 0.17.0dev documentation</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -296,6 +296,43 @@ in the top right corner -->
    </li>
   </ul>
  </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="ddd.html">
+   Digital Dynamical Decoupling
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ddd-1-intro.html">
+     How do I use DDD?
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ddd-2-use-case.html">
+     When should I use DDD?
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ddd-3-options.html">
+     What additional options are available when using DDD?
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ddd-4-low-level.html">
+     What happens when I use DDD?
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ddd-5-theory.html">
+     What is the theory behind DDD?
+    </a>
+   </li>
+  </ul>
+ </li>
  <li class="toctree-l1">
   <a class="reference internal" href="error-mitigation.html">
    About Error Mitigation
@@ -503,7 +540,7 @@ In the next sections instead, we show how one can apply ZNE at a lower level, i.
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.9999999824694695
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.0000000786439744
 </pre></div>
 </div>
 </div>
@@ -524,7 +561,7 @@ In the next sections instead, we show how one can apply ZNE at a lower level, i.
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.9999999824694695
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.0000000786439744
 </pre></div>
 </div>
 </div>
@@ -573,7 +610,7 @@ circuit is a Cirq circuit, however.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.9675438404083242
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.9551590681076042
 </pre></div>
 </div>
 </div>
@@ -665,7 +702,7 @@ This is simply a wrap of <a class="reference external" href="https://numpy.org/d
 of Mitiq. This function can be used to fit a polynomial ansatz to the measured expectation values. This function performs
 a least squares minimization which is <strong>linear</strong> (with respect to the coefficients) and therefore admits an algebraic solution.</p>
 <p>Similarly, from <a class="reference internal" href="../apidoc.html#module-mitiq.zne.inference" title="mitiq.zne.inference"><code class="xref py py-mod docutils literal notranslate"><span class="pre">mitiq.zne.inference</span></code></a> one can also import <a class="reference internal" href="../apidoc.html#mitiq.zne.inference.mitiq_curve_fit" title="mitiq.zne.inference.mitiq_curve_fit"><code class="xref py py-func docutils literal notranslate"><span class="pre">mitiq_curve_fit()</span></code></a>,
-which is instead a wrap of <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.curve_fit.html#scipy.optimize.curve_fit" title="(in SciPy v1.8.0)"><code class="xref py py-func docutils literal notranslate"><span class="pre">scipy.optimize.curve_fit()</span></code></a>. Differently from <a class="reference internal" href="../apidoc.html#mitiq.zne.inference.mitiq_polyfit" title="mitiq.zne.inference.mitiq_polyfit"><code class="xref py py-func docutils literal notranslate"><span class="pre">mitiq_polyfit()</span></code></a>,
+which is instead a wrap of <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.curve_fit.html#scipy.optimize.curve_fit" title="(in SciPy v1.8.1)"><code class="xref py py-func docutils literal notranslate"><span class="pre">scipy.optimize.curve_fit()</span></code></a>. Differently from <a class="reference internal" href="../apidoc.html#mitiq.zne.inference.mitiq_polyfit" title="mitiq.zne.inference.mitiq_polyfit"><code class="xref py py-func docutils literal notranslate"><span class="pre">mitiq_polyfit()</span></code></a>,
 <a class="reference internal" href="../apidoc.html#mitiq.zne.inference.mitiq_curve_fit" title="mitiq.zne.inference.mitiq_curve_fit"><code class="xref py py-func docutils literal notranslate"><span class="pre">mitiq_curve_fit()</span></code></a> can be used with a generic (user-defined) ansatz.
 Since the fit is based on a numerical <strong>non-linear</strong> least squares minimization, this method may fail to converge
 or could be subject to numerical instabilities.</p>
@@ -688,7 +725,7 @@ or could be subject to numerical instabilities.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.0057975851505438
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.0057045852849926
 </pre></div>
 </div>
 </div>
@@ -720,7 +757,7 @@ maps a noise scale factor to the corresponding expectation value.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.0057975662871468
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.0057043634180658
 </pre></div>
 </div>
 </div>

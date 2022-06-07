@@ -8,7 +8,7 @@ in the top right corner -->
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Index &#8212; Mitiq 0.15.0dev documentation</title>
+    <title>Index &#8212; Mitiq 0.17.0dev documentation</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -250,6 +250,8 @@ in the top right corner -->
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="apidoc.html#mitiq.pec.types.types.OperationRepresentation.coeff_of">coeff_of() (mitiq.pec.types.types.OperationRepresentation method)</a>
 </li>
+      <li><a href="apidoc.html#mitiq.benchmarks.quantum_volume_circuits.compute_heavy_bitstrings">compute_heavy_bitstrings() (in module mitiq.benchmarks.quantum_volume_circuits)</a>
+</li>
       <li><a href="apidoc.html#mitiq.zne.scaling.parameter.compute_parameter_variance">compute_parameter_variance() (in module mitiq.zne.scaling.parameter)</a>
 </li>
       <li><a href="apidoc.html#mitiq.zne.inference.ConvergenceWarning">ConvergenceWarning</a>
@@ -263,6 +265,10 @@ in the top right corner -->
 
 <h2 id="D">D</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="apidoc.html#mitiq.ddd.ddd.ddd_decorator">ddd_decorator() (in module mitiq.ddd.ddd)</a>
+</li>
+  </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="apidoc.html#mitiq.pec.types.types.OperationRepresentation.distribution">distribution() (mitiq.pec.types.types.OperationRepresentation method)</a>
 </li>
@@ -279,6 +285,8 @@ in the top right corner -->
       <li><a href="apidoc.html#mitiq.interface.mitiq_qiskit.qiskit_utils.execute">execute() (in module mitiq.interface.mitiq_qiskit.qiskit_utils)</a>
 </li>
       <li><a href="apidoc.html#mitiq.cdr.cdr.execute_with_cdr">execute_with_cdr() (in module mitiq.cdr.cdr)</a>
+</li>
+      <li><a href="apidoc.html#mitiq.ddd.ddd.execute_with_ddd">execute_with_ddd() (in module mitiq.ddd.ddd)</a>
 </li>
       <li><a href="apidoc.html#mitiq.interface.mitiq_cirq.cirq_utils.execute_with_depolarizing_noise">execute_with_depolarizing_noise() (in module mitiq.interface.mitiq_cirq.cirq_utils)</a>
 </li>
@@ -370,16 +378,18 @@ in the top right corner -->
 </li>
       <li><a href="apidoc.html#mitiq.benchmarks.mirror_circuits.generate_mirror_circuit">generate_mirror_circuit() (in module mitiq.benchmarks.mirror_circuits)</a>
 </li>
+      <li><a href="apidoc.html#mitiq.benchmarks.quantum_volume_circuits.generate_quantum_volume_circuit">generate_quantum_volume_circuit() (in module mitiq.benchmarks.quantum_volume_circuits)</a>
+</li>
       <li><a href="apidoc.html#mitiq.benchmarks.randomized_benchmarking.generate_rb_circuits">generate_rb_circuits() (in module mitiq.benchmarks.randomized_benchmarking)</a>
 </li>
       <li><a href="apidoc.html#mitiq.cdr.clifford_training_data.generate_training_circuits">generate_training_circuits() (in module mitiq.cdr.clifford_training_data)</a>
 </li>
       <li><a href="apidoc.html#mitiq.zne.inference.Factory.get_expectation_values">get_expectation_values() (mitiq.zne.inference.Factory method)</a>
 </li>
-      <li><a href="apidoc.html#mitiq.zne.inference.Factory.get_extrapolation_curve">get_extrapolation_curve() (mitiq.zne.inference.Factory method)</a>
-</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="apidoc.html#mitiq.zne.inference.Factory.get_extrapolation_curve">get_extrapolation_curve() (mitiq.zne.inference.Factory method)</a>
+</li>
       <li><a href="apidoc.html#mitiq.zne.inference.Factory.get_optimal_parameters">get_optimal_parameters() (mitiq.zne.inference.Factory method)</a>
 </li>
       <li><a href="apidoc.html#mitiq.zne.inference.Factory.get_parameters_covariance">get_parameters_covariance() (mitiq.zne.inference.Factory method)</a>
@@ -403,6 +413,8 @@ in the top right corner -->
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="apidoc.html#mitiq.interface.mitiq_qiskit.qiskit_utils.initialized_depolarizing_noise">initialized_depolarizing_noise() (in module mitiq.interface.mitiq_qiskit.qiskit_utils)</a>
+</li>
+      <li><a href="apidoc.html#mitiq.ddd.insertion.insert_ddd_sequences">insert_ddd_sequences() (in module mitiq.ddd.insertion)</a>
 </li>
       <li><a href="apidoc.html#mitiq.executor.executor.Executor.is_batched_executor">is_batched_executor() (mitiq.executor.executor.Executor static method)</a>
 </li>
@@ -467,6 +479,8 @@ in the top right corner -->
       <li><a href="apidoc.html#mitiq.cdr.cdr.mitigate_executor">mitigate_executor() (in module mitiq.cdr.cdr)</a>
 
       <ul>
+        <li><a href="apidoc.html#mitiq.ddd.ddd.mitigate_executor">(in module mitiq.ddd.ddd)</a>
+</li>
         <li><a href="apidoc.html#mitiq.pec.pec.mitigate_executor">(in module mitiq.pec.pec)</a>
 </li>
         <li><a href="apidoc.html#mitiq.zne.zne.mitigate_executor">(in module mitiq.zne.zne)</a>
@@ -491,6 +505,13 @@ in the top right corner -->
 
       <ul>
         <li><a href="apidoc.html#module-mitiq.benchmarks.mirror_circuits">module</a>
+</li>
+      </ul></li>
+      <li>
+    mitiq.benchmarks.quantum_volume_circuits
+
+      <ul>
+        <li><a href="apidoc.html#module-mitiq.benchmarks.quantum_volume_circuits">module</a>
 </li>
       </ul></li>
       <li>
@@ -633,6 +654,8 @@ in the top right corner -->
         <li><a href="apidoc.html#module-mitiq.pec.representations.depolarizing">module</a>
 </li>
       </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li>
     mitiq.pec.representations.optimal
 
@@ -640,8 +663,6 @@ in the top right corner -->
         <li><a href="apidoc.html#module-mitiq.pec.representations.optimal">module</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li>
     mitiq.pec.sampling
 
@@ -718,6 +739,8 @@ in the top right corner -->
         <li><a href="apidoc.html#module-mitiq.benchmarks.ghz_circuits">mitiq.benchmarks.ghz_circuits</a>
 </li>
         <li><a href="apidoc.html#module-mitiq.benchmarks.mirror_circuits">mitiq.benchmarks.mirror_circuits</a>
+</li>
+        <li><a href="apidoc.html#module-mitiq.benchmarks.quantum_volume_circuits">mitiq.benchmarks.quantum_volume_circuits</a>
 </li>
         <li><a href="apidoc.html#module-mitiq.benchmarks.randomized_benchmarking">mitiq.benchmarks.randomized_benchmarking</a>
 </li>

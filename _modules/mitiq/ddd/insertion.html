@@ -8,7 +8,7 @@ in the top right corner -->
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>mitiq.ddd.insertion &#8212; Mitiq 0.15.0dev documentation</title>
+    <title>mitiq.ddd.insertion &#8212; Mitiq 0.17.0dev documentation</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -195,8 +195,11 @@ in the top right corner -->
 <span class="c1"># along with this program.  If not, see &lt;https://www.gnu.org/licenses/&gt;.</span>
 
 <span class="sd">&quot;&quot;&quot;Tools to determine slack windows in circuits and to insert DDD sequences.&quot;&quot;&quot;</span>
-<span class="kn">from</span> <span class="nn">cirq</span> <span class="kn">import</span> <span class="n">Circuit</span>
+<span class="kn">from</span> <span class="nn">cirq</span> <span class="kn">import</span> <span class="n">Circuit</span><span class="p">,</span> <span class="n">LineQubit</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Callable</span>
+<span class="kn">from</span> <span class="nn">mitiq.interface</span> <span class="kn">import</span> <span class="n">noise_scaling_converter</span>
+<span class="kn">from</span> <span class="nn">mitiq</span> <span class="kn">import</span> <span class="n">QPROGRAM</span>
 
 
 <span class="k">def</span> <span class="nf">_get_circuit_mask</span><span class="p">(</span><span class="n">circuit</span><span class="p">:</span> <span class="n">Circuit</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
@@ -264,6 +267,65 @@ in the top right corner -->
                         <span class="k">break</span>
 
     <span class="k">return</span> <span class="n">slack_matrix</span></div>
+
+
+<div class="viewcode-block" id="insert_ddd_sequences"><a class="viewcode-back" href="../../../apidoc.html#mitiq.ddd.insertion.insert_ddd_sequences">[docs]</a><span class="k">def</span> <span class="nf">insert_ddd_sequences</span><span class="p">(</span>
+    <span class="n">circuit</span><span class="p">:</span> <span class="n">QPROGRAM</span><span class="p">,</span>
+    <span class="n">rule</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[[</span><span class="nb">int</span><span class="p">],</span> <span class="n">Circuit</span><span class="p">],</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">QPROGRAM</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Returns the circuit with DDD sequences applied according to the input rule.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        circuit: The QPROGRAM circuit to be modified with DDD sequences.</span>
+<span class="sd">        rule: The rule determining what DDD sequences should be applied.</span>
+<span class="sd">            A set of built-in DDD rules can be imported from</span>
+<span class="sd">            ``mitiq.ddd.rules``.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        The circuit with DDD sequences added.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">return</span> <span class="n">_insert_ddd_sequences</span><span class="p">(</span><span class="n">circuit</span><span class="p">,</span> <span class="n">rule</span><span class="p">)</span></div>
+
+
+<span class="nd">@noise_scaling_converter</span>
+<span class="k">def</span> <span class="nf">_insert_ddd_sequences</span><span class="p">(</span>
+    <span class="n">circuit</span><span class="p">:</span> <span class="n">Circuit</span><span class="p">,</span>
+    <span class="n">rule</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[[</span><span class="nb">int</span><span class="p">],</span> <span class="n">Circuit</span><span class="p">],</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Circuit</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Returns the circuit with DDD sequences applied according to the input rule.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        circuit: The Cirq circuit to be modified with DDD sequences.</span>
+<span class="sd">        rule: The rule determining what DDD sequences should be applied.</span>
+<span class="sd">            A set of built-in DDD rules can be imported from</span>
+<span class="sd">            ``mitiq.ddd.rules``.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        The circuit with DDD sequences added.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">slack_matrix</span> <span class="o">=</span> <span class="n">get_slack_matrix_from_circuit_mask</span><span class="p">(</span>
+        <span class="n">_get_circuit_mask</span><span class="p">(</span><span class="n">circuit</span><span class="p">)</span>
+    <span class="p">)</span>
+    <span class="c1"># Copy to avoid mutating the input circuit</span>
+    <span class="n">circuit_with_ddd</span> <span class="o">=</span> <span class="n">circuit</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="n">qubits</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">circuit</span><span class="o">.</span><span class="n">all_qubits</span><span class="p">())</span>
+    <span class="k">for</span> <span class="n">moment_idx</span><span class="p">,</span> <span class="n">moment</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">circuit</span><span class="p">):</span>
+        <span class="n">slack_column</span> <span class="o">=</span> <span class="n">slack_matrix</span><span class="p">[:,</span> <span class="n">moment_idx</span><span class="p">]</span>
+        <span class="k">for</span> <span class="n">row_index</span><span class="p">,</span> <span class="n">slack_length</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">slack_column</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">slack_length</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="n">ddd_sequence</span> <span class="o">=</span> <span class="n">rule</span><span class="p">(</span><span class="n">slack_length</span><span class="p">)</span><span class="o">.</span><span class="n">transform_qubits</span><span class="p">(</span>
+                    <span class="p">{</span><span class="n">LineQubit</span><span class="p">(</span><span class="mi">0</span><span class="p">):</span> <span class="n">qubits</span><span class="p">[</span><span class="n">row_index</span><span class="p">]}</span>
+                <span class="p">)</span>
+                <span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">op</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">ddd_sequence</span><span class="o">.</span><span class="n">all_operations</span><span class="p">()):</span>
+                    <span class="n">circuit_with_ddd</span><span class="o">.</span><span class="n">_moments</span><span class="p">[</span>
+                        <span class="n">moment_idx</span> <span class="o">+</span> <span class="n">idx</span>
+                    <span class="p">]</span> <span class="o">=</span> <span class="n">circuit_with_ddd</span><span class="o">.</span><span class="n">_moments</span><span class="p">[</span>
+                        <span class="n">moment_idx</span> <span class="o">+</span> <span class="n">idx</span>
+                    <span class="p">]</span><span class="o">.</span><span class="n">with_operations</span><span class="p">(</span>
+                        <span class="n">op</span>
+                    <span class="p">)</span>
+    <span class="k">return</span> <span class="n">circuit_with_ddd</span>
 </pre></div>
 
               </div>

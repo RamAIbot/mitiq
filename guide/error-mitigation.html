@@ -8,7 +8,7 @@ in the top right corner -->
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>About Error Mitigation &#8212; Mitiq 0.15.0dev documentation</title>
+    <title>About Error Mitigation &#8212; Mitiq 0.17.0dev documentation</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -47,7 +47,7 @@ in the top right corner -->
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Examples" href="../examples/examples.html" />
-    <link rel="prev" title="What is the theory behind CDR?" href="cdr-5-theory.html" />
+    <link rel="prev" title="What is the theory behind DDD?" href="ddd-5-theory.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en">
     
@@ -296,6 +296,43 @@ in the top right corner -->
    </li>
   </ul>
  </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="ddd.html">
+   Digital Dynamical Decoupling
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ddd-1-intro.html">
+     How do I use DDD?
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ddd-2-use-case.html">
+     When should I use DDD?
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ddd-3-options.html">
+     What additional options are available when using DDD?
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ddd-4-low-level.html">
+     What happens when I use DDD?
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ddd-5-theory.html">
+     What is the theory behind DDD?
+    </a>
+   </li>
+  </ul>
+ </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
    About Error Mitigation
@@ -427,7 +464,7 @@ in the top right corner -->
 <p>This is intended as a primer on quantum error mitigation, providing a
 collection of up-to-date resources from the academic literature, as well as
 other external links framing this topic in the open-source software ecosystem.
-This recent review article <span id="id1">[<a class="reference internal" href="../zz_bibliography.html#id12" title="Suguru Endo, Zhenyu Cai, Simon C. Benjamin, and Xiao Yuan. Hybrid quantum-classical algorithms and quantum error mitigation. Journal of the Physical Society of Japan, 90(3):032001, (2021). URL: http://dx.doi.org/10.7566/JPSJ.90.032001, doi:10.7566/jpsj.90.032001.">12</a>]</span> summarizes the theory behind many error-mitigating
+This recent review article <span id="id1">[<a class="reference internal" href="../zz_bibliography.html#id14" title="Suguru Endo, Zhenyu Cai, Simon C. Benjamin, and Xiao Yuan. Hybrid quantum-classical algorithms and quantum error mitigation. Journal of the Physical Society of Japan, 90(3):032001, (2021). URL: http://dx.doi.org/10.7566/JPSJ.90.032001, doi:10.7566/jpsj.90.032001.">22</a>]</span> summarizes the theory behind many error-mitigating
 techniques.</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="#guide-qem-what"><span class="std std-ref">What is quantum error mitigation?</span></a></p></li>
@@ -472,7 +509,7 @@ value. This fact can significantly amplify the statistical uncertainty of the re
 <div class="section" id="probabilistic-error-cancellation">
 <span id="guide-qem-pec"></span><h3>Probabilistic error cancellation<a class="headerlink" href="#probabilistic-error-cancellation" title="Permalink to this headline">#</a></h3>
 <p>In Mitiq, probabilistic error cancellation is implemented in the module <code class="xref py py-mod docutils literal notranslate"><span class="pre">mitiq.pec</span></code>.</p>
-<p>Probabilistic error cancellation (PEC) uses a quasi-probability representation <span id="id2">[<a class="reference internal" href="../zz_bibliography.html#id33" title="Kristan Temme, Sergey Bravyi, and Jay M. Gambetta. Error mitigation for short-depth quantum circuits. Physical Review Letters, (2017). URL: https://doi.org/10.1103/PhysRevLett.119.180509, doi:10.1103/physrevlett.119.180509.">4</a>]</span>
+<p>Probabilistic error cancellation (PEC) uses a quasi-probability representation <span id="id2">[<a class="reference internal" href="../zz_bibliography.html#id39" title="Kristan Temme, Sergey Bravyi, and Jay M. Gambetta. Error mitigation for short-depth quantum circuits. Physical Review Letters, (2017). URL: https://doi.org/10.1103/PhysRevLett.119.180509, doi:10.1103/physrevlett.119.180509.">4</a>]</span>
 to express an ideal (unitary) quantum channel as a linear combination of noisy operations.
 Given a set of noisy but implementable operations <span class="math notranslate nohighlight">\(\Omega = \{O_1, \dots, O_m\}\)</span>, an
 ideal unitary gate can be expressed as
@@ -485,7 +522,7 @@ of interest <span class="math notranslate nohighlight">\(\langle X\rangle_{\text
 <span class="math notranslate nohighlight">\(\{\mathcal{\mathcal G}_i\}_{i=1}^L\)</span>. To do this in PEC, we sample a noisy operation
 <span class="math notranslate nohighlight">\(\mathcal{O}_{\alpha}\)</span> for each ideal gate <span class="math notranslate nohighlight">\(\mathcal{G}_i\)</span>
 with probability <span class="math notranslate nohighlight">\(P_i(\alpha)\)</span>. This sampling produces a sequence of noisy operations
-<span class="math notranslate nohighlight">\(\{\mathcal{O}_{\alpha_i}\}_{i=1}^L\)</span>) whose execution produces the
+<span class="math notranslate nohighlight">\(\{\mathcal{O}_{\alpha_i}\}_{i=1}^L\)</span> whose execution produces the
 final mixed state <span class="math notranslate nohighlight">\(\rho_f\)</span>. Then, by measuring the observable <span class="math notranslate nohighlight">\(X\)</span>, setting
 <span class="math notranslate nohighlight">\(\gamma_{\text{tot}} := \prod_{i}^L \gamma_i\)</span> and
 <span class="math notranslate nohighlight">\(\sigma_{\text{tot}} = \prod_{i=1}^L \sigma_i(\alpha)\)</span>, we can obtain an unbiased
@@ -499,7 +536,7 @@ and <span class="math notranslate nohighlight">\(\mathbb E\)</span> is the sampl
 <p>The number of samples required to estimate the ideal expectation value with error
 <span class="math notranslate nohighlight">\(\delta\)</span> and probability <span class="math notranslate nohighlight">\(1-\epsilon\)</span> scales as
 <span class="math notranslate nohighlight">\(\left(2 \gamma_{\text{tot}}^{2} / \delta^{2}\right) \log (2 / \epsilon)\)</span>
-<span id="id3">[<a class="reference internal" href="../zz_bibliography.html#id32" title="Ryuji Takagi. Optimal resource cost for error mitigation. Physical Review Research, (2021). URL: http://dx.doi.org/10.1103/PhysRevResearch.3.033178, doi:10.1103/physrevresearch.3.033178.">8</a>]</span>. Thus, the sampling overhead is determined
+<span id="id3">[<a class="reference internal" href="../zz_bibliography.html#id38" title="Ryuji Takagi. Optimal resource cost for error mitigation. Physical Review Research, (2021). URL: http://dx.doi.org/10.1103/PhysRevResearch.3.033178, doi:10.1103/physrevresearch.3.033178.">8</a>]</span>. Thus, the sampling overhead is determined
 by <span class="math notranslate nohighlight">\(\gamma_{\text{tot}}\)</span> which grows exponentially in the number of gates.
 It is then crucial to find a linear decomposition that minimizes <span class="math notranslate nohighlight">\(\gamma_{\text{tot}}\)</span>.
 In addition, a full characterization of the noisy operations up to a good precision
@@ -516,7 +553,7 @@ including randomized compiling or subspace expansion, can be found in
 <span id="guide-qem-why"></span><h2>Why is quantum error mitigation important?<a class="headerlink" href="#why-is-quantum-error-mitigation-important" title="Permalink to this headline">#</a></h2>
 <p>The noisy intermediate-scale quantum (NISQ) era is characterized by
 short-depth circuits in which noise affects state
-preparation, gate operations, and measurement <span id="id4">[<a class="reference internal" href="../zz_bibliography.html#id27" title="John Preskill. Quantum computing in the NISQ era and beyond. Quantum, 2:79, (2018). URL: https://doi.org/10.22331/q-2018-08-06-79, doi:10.22331/q-2018-08-06-79.">13</a>]</span>.
+preparation, gate operations, and measurement <span id="id4">[<a class="reference internal" href="../zz_bibliography.html#id32" title="John Preskill. Quantum computing in the NISQ era and beyond. Quantum, 2:79, (2018). URL: https://doi.org/10.22331/q-2018-08-06-79, doi:10.22331/q-2018-08-06-79.">23</a>]</span>.
 It is not possible to implement quantum error correcting codes on them due to the
 needed qubit number and circuit depth required by these codes. Error mitigation
 offers low-overhead methods to more accurately and reliably estimate observable values.</p>
@@ -547,7 +584,7 @@ for the quantum computation. Current quantum computing devices have been able
 to demonstrate quantum error correction only with a very small number of
 qubits. What is now referred quantum error mitigation is generally a series of
 techniques that stemmed as more practical quantum error correction solutions
-<span id="id5">[<a class="reference internal" href="../zz_bibliography.html#id16" title="E. Knill. Quantum computing with realistically noisy devices. Nature, 434(7029):39–44, (2005). URL: https://doi.org/10.1038/nature03350, doi:10.1038/nature03350.">14</a>]</span>.</p>
+<span id="id5">[<a class="reference internal" href="../zz_bibliography.html#id20" title="E. Knill. Quantum computing with realistically noisy devices. Nature, 434(7029):39–44, (2005). URL: https://doi.org/10.1038/nature03350, doi:10.1038/nature03350.">24</a>]</span>.</p>
 </div>
 <div class="section" id="quantum-optimal-control">
 <span id="guide-qem-qoc"></span><h3>Quantum optimal control<a class="headerlink" href="#quantum-optimal-control" title="Permalink to this headline">#</a></h3>
@@ -556,20 +593,20 @@ applied for many scopes. It entails many fields, and it is generally based on a
 feedback loop between an agent and a target system.
 Optimal control is applied to several quantum technologies,
 including in the pulse shaping of gate design in quantum circuits calibration
-against noisy devices <span id="id6">[<a class="reference internal" href="../zz_bibliography.html#id3" title="Constantin Brif, Raj Chakrabarti, and Herschel Rabitz. Control of quantum phenomena: past, present and future. New Journal of Physics, 12(7):075008, (2010). URL: https://doi.org/10.1088/1367-2630/12/7/075008, doi:10.1088/1367-2630/12/7/075008.">15</a>]</span>.</p>
+against noisy devices <span id="id6">[<a class="reference internal" href="../zz_bibliography.html#id3" title="Constantin Brif, Raj Chakrabarti, and Herschel Rabitz. Control of quantum phenomena: past, present and future. New Journal of Physics, 12(7):075008, (2010). URL: https://doi.org/10.1088/1367-2630/12/7/075008, doi:10.1088/1367-2630/12/7/075008.">25</a>]</span>.</p>
 <p>A key difference between some quantum error mitigation techniques and quantum
 optimal control is that the former can be implemented in some instances with
 post-processing techniques, while the latter relies on an active feedback loop.
 An example of a specific application of optimal control to quantum dynamics that
 can be seen as a quantum error mitigation technique, is in dynamical decoupling
-<span id="id7">[<a class="reference internal" href="../zz_bibliography.html#id34" title="Lorenza Viola, Emanuel Knill, and Seth Lloyd. Dynamical decoupling of open quantum systems. Physical Review Letters, 82(12):2417–2421, (1999). URL: https://doi.org/10.1103/PhysRevLett.82.2417, doi:10.1103/physrevlett.82.2417.">16</a>]</span>. This technique employs fast control pulses to effectively
+<span id="id7">[<a class="reference internal" href="../zz_bibliography.html#id40" title="Lorenza Viola, Emanuel Knill, and Seth Lloyd. Dynamical decoupling of open quantum systems. Physical Review Letters, 82(12):2417–2421, (1999). URL: https://doi.org/10.1103/PhysRevLett.82.2417, doi:10.1103/physrevlett.82.2417.">12</a>]</span>. This technique employs fast control pulses to effectively
 decouple a system from its environment, with techniques pioneered in the nuclear
 magnetic resonance community.</p>
 </div>
 <div class="section" id="open-quantum-systems">
 <span id="guide-qem-noise"></span><h3>Open quantum systems<a class="headerlink" href="#open-quantum-systems" title="Permalink to this headline">#</a></h3>
 <p>More in general, quantum computing devices can be studied in the framework of
-open quantum systems <span id="id8">[<a class="reference internal" href="../zz_bibliography.html#id7" title="Howard J. Carmichael. Statistical Methods in Quantum Optics 1: Master Equations and Fokker-Planck Equations. Springer-Verlag, (1999). ISBN 978-3-540-54882-9.">17</a>, <a class="reference internal" href="../zz_bibliography.html#id8" title="H.J. Carmichael. Statistical Methods in Quantum Optics 2: Non-Classical Fields. Springer Berlin Heidelberg, (2007). ISBN 9783540713197.">18</a>, <a class="reference internal" href="../zz_bibliography.html#id13" title="C. Gardiner and P. Zoller. Quantum Noise: A Handbook of Markovian and Non-Markovian Quantum Stochastic Methods with Applications to Quantum Optics. Springer, (2004). ISBN 9783540223016.">19</a>, <a class="reference internal" href="../zz_bibliography.html#id4" title="H.P. Breuer and F. Petruccione. The Theory of Open Quantum Systems. OUP Oxford, (2007). ISBN 9780199213900.">20</a>]</span>,
+open quantum systems <span id="id8">[<a class="reference internal" href="../zz_bibliography.html#id4" title="H.P. Breuer and F. Petruccione. The Theory of Open Quantum Systems. OUP Oxford, (2007). ISBN 9780199213900.">15</a>, <a class="reference internal" href="../zz_bibliography.html#id7" title="Howard J. Carmichael. Statistical Methods in Quantum Optics 1: Master Equations and Fokker-Planck Equations. Springer-Verlag, (1999). ISBN 978-3-540-54882-9.">26</a>, <a class="reference internal" href="../zz_bibliography.html#id8" title="H.J. Carmichael. Statistical Methods in Quantum Optics 2: Non-Classical Fields. Springer Berlin Heidelberg, (2007). ISBN 9783540713197.">27</a>, <a class="reference internal" href="../zz_bibliography.html#id15" title="C. Gardiner and P. Zoller. Quantum Noise: A Handbook of Markovian and Non-Markovian Quantum Stochastic Methods with Applications to Quantum Optics. Springer, (2004). ISBN 9783540223016.">28</a>]</span>,
 that is, systems that exchange energy and information with the surrounding
 environment. On the one hand, the qubit-environment exchange can be controlled,
 and this feature is actually fundamental to extract information and process it.
@@ -586,7 +623,7 @@ computing platform that is used, as well as the computing architecture. For exam
 superconducting-circuit-based quantum computers have chips that
 are prone to cross-talk noise, while qubits encoded in trapped ions need to be
 shuttled with electromagnetic pulses, and solid-state artificial atoms, including
-quantum dots, are heavily affected by inhomogeneous broadening <span id="id9">[<a class="reference internal" href="../zz_bibliography.html#id5" title="Iulia Buluta, Sahel Ashhab, and Franco Nori. Natural and artificial atoms for quantum computation. Reports on Progress in Physics, 74(10):104401, (2011). URL: https://doi.org/10.1088/0034-4885/74/10/104401, doi:10.1088/0034-4885/74/10/104401.">21</a>]</span>.</p>
+quantum dots, are heavily affected by inhomogeneous broadening <span id="id9">[<a class="reference internal" href="../zz_bibliography.html#id5" title="Iulia Buluta, Sahel Ashhab, and Franco Nori. Natural and artificial atoms for quantum computation. Reports on Progress in Physics, 74(10):104401, (2011). URL: https://doi.org/10.1088/0034-4885/74/10/104401, doi:10.1088/0034-4885/74/10/104401.">29</a>]</span>.</p>
 </div>
 </div>
 <div class="section" id="external-references">
@@ -600,53 +637,53 @@ circuits.</p>
 <ul class="simple">
 <li><dl class="simple">
 <dt>On <strong>zero-noise extrapolation</strong>:</dt><dd><ul>
-<li><p>Theory, Y. Li and S. Benjamin, <em>Phys. Rev. X</em>, 2017 <span id="id10">[<a class="reference internal" href="../zz_bibliography.html#id17" title="Ying Li and Simon C. Benjamin. Efficient variational quantum simulator incorporating active error minimization. Phys. Rev. X, 7:021050, (2017). URL: https://link.aps.org/doi/10.1103/PhysRevX.7.021050, doi:10.1103/PhysRevX.7.021050.">3</a>]</span> and K. Temme <em>et al.</em>, <em>Phys. Rev. Lett.</em>, 2017 <span id="id11">[<a class="reference internal" href="../zz_bibliography.html#id33" title="Kristan Temme, Sergey Bravyi, and Jay M. Gambetta. Error mitigation for short-depth quantum circuits. Physical Review Letters, (2017). URL: https://doi.org/10.1103/PhysRevLett.119.180509, doi:10.1103/physrevlett.119.180509.">4</a>]</span></p></li>
-<li><p>Experiment on superconducting circuit chip, A. Kandala <em>et al.</em>, <em>Nature</em>, 2019 <span id="id12">[<a class="reference internal" href="../zz_bibliography.html#id15" title="Abhinav Kandala, Kristan Temme, Antonio D. Córcoles, Antonio Mezzacapo, Jerry M. Chow, and Jay M. Gambetta. Error mitigation extends the computational reach of a noisy quantum processor. Nature, 567(7749):491–495, (2019). URL: https://doi.org/10.1038/s41586-019-1040-7, doi:10.1038/s41586-019-1040-7.">5</a>]</span></p></li>
+<li><p>Theory, Y. Li and S. Benjamin, <em>Phys. Rev. X</em>, 2017 <span id="id10">[<a class="reference internal" href="../zz_bibliography.html#id21" title="Ying Li and Simon C. Benjamin. Efficient variational quantum simulator incorporating active error minimization. Phys. Rev. X, 7:021050, (2017). URL: https://link.aps.org/doi/10.1103/PhysRevX.7.021050, doi:10.1103/PhysRevX.7.021050.">3</a>]</span> and K. Temme <em>et al.</em>, <em>Phys. Rev. Lett.</em>, 2017 <span id="id11">[<a class="reference internal" href="../zz_bibliography.html#id39" title="Kristan Temme, Sergey Bravyi, and Jay M. Gambetta. Error mitigation for short-depth quantum circuits. Physical Review Letters, (2017). URL: https://doi.org/10.1103/PhysRevLett.119.180509, doi:10.1103/physrevlett.119.180509.">4</a>]</span></p></li>
+<li><p>Experiment on superconducting circuit chip, A. Kandala <em>et al.</em>, <em>Nature</em>, 2019 <span id="id12">[<a class="reference internal" href="../zz_bibliography.html#id19" title="Abhinav Kandala, Kristan Temme, Antonio D. Córcoles, Antonio Mezzacapo, Jerry M. Chow, and Jay M. Gambetta. Error mitigation extends the computational reach of a noisy quantum processor. Nature, 567(7749):491–495, (2019). URL: https://doi.org/10.1038/s41586-019-1040-7, doi:10.1038/s41586-019-1040-7.">5</a>]</span></p></li>
 </ul>
 </dd>
 </dl>
 </li>
 <li><dl class="simple">
 <dt>On <strong>probabilistic error cancellation</strong>:</dt><dd><ul>
-<li><p>Theory, Y. Li and S. Benjamin, <em>Phys. Rev. X</em>, 2017 <span id="id13">[<a class="reference internal" href="../zz_bibliography.html#id17" title="Ying Li and Simon C. Benjamin. Efficient variational quantum simulator incorporating active error minimization. Phys. Rev. X, 7:021050, (2017). URL: https://link.aps.org/doi/10.1103/PhysRevX.7.021050, doi:10.1103/PhysRevX.7.021050.">3</a>]</span> and K. Temme <em>et al.</em>, <em>Phys. Rev. Lett.</em>, 2017 <span id="id14">[<a class="reference internal" href="../zz_bibliography.html#id33" title="Kristan Temme, Sergey Bravyi, and Jay M. Gambetta. Error mitigation for short-depth quantum circuits. Physical Review Letters, (2017). URL: https://doi.org/10.1103/PhysRevLett.119.180509, doi:10.1103/physrevlett.119.180509.">4</a>]</span></p></li>
-<li><p>Resource analysis for probabilistic error cancellation, Ryuji Takagi, arxiv, 2020 <span id="id15">[<a class="reference internal" href="../zz_bibliography.html#id32" title="Ryuji Takagi. Optimal resource cost for error mitigation. Physical Review Research, (2021). URL: http://dx.doi.org/10.1103/PhysRevResearch.3.033178, doi:10.1103/physrevresearch.3.033178.">8</a>]</span></p></li>
+<li><p>Theory, Y. Li and S. Benjamin, <em>Phys. Rev. X</em>, 2017 <span id="id13">[<a class="reference internal" href="../zz_bibliography.html#id21" title="Ying Li and Simon C. Benjamin. Efficient variational quantum simulator incorporating active error minimization. Phys. Rev. X, 7:021050, (2017). URL: https://link.aps.org/doi/10.1103/PhysRevX.7.021050, doi:10.1103/PhysRevX.7.021050.">3</a>]</span> and K. Temme <em>et al.</em>, <em>Phys. Rev. Lett.</em>, 2017 <span id="id14">[<a class="reference internal" href="../zz_bibliography.html#id39" title="Kristan Temme, Sergey Bravyi, and Jay M. Gambetta. Error mitigation for short-depth quantum circuits. Physical Review Letters, (2017). URL: https://doi.org/10.1103/PhysRevLett.119.180509, doi:10.1103/physrevlett.119.180509.">4</a>]</span></p></li>
+<li><p>Resource analysis for probabilistic error cancellation, Ryuji Takagi, arxiv, 2020 <span id="id15">[<a class="reference internal" href="../zz_bibliography.html#id38" title="Ryuji Takagi. Optimal resource cost for error mitigation. Physical Review Research, (2021). URL: http://dx.doi.org/10.1103/PhysRevResearch.3.033178, doi:10.1103/physrevresearch.3.033178.">8</a>]</span></p></li>
 </ul>
 </dd>
 </dl>
 </li>
 <li><dl class="simple">
 <dt>On <strong>randomization methods</strong>:</dt><dd><ul>
-<li><p>Randomized compiling with twirling gates, J. Wallman <em>et al.</em>, <em>Phys. Rev. A</em>, 2016 <span id="id16">[<a class="reference internal" href="../zz_bibliography.html#id35" title="Joel J. Wallman and Joseph Emerson. Noise tailoring for scalable quantum computation via randomized compiling. Phys. Rev. A, 94:052325, (2016). URL: https://link.aps.org/doi/10.1103/PhysRevA.94.052325, doi:10.1103/PhysRevA.94.052325.">22</a>]</span></p></li>
-<li><p>Porbabilistic error correction, K. Temme <em>et al.</em>, <em>Phys. Rev. Lett.</em>, 2017 <span id="id17">[<a class="reference internal" href="../zz_bibliography.html#id33" title="Kristan Temme, Sergey Bravyi, and Jay M. Gambetta. Error mitigation for short-depth quantum circuits. Physical Review Letters, (2017). URL: https://doi.org/10.1103/PhysRevLett.119.180509, doi:10.1103/physrevlett.119.180509.">4</a>]</span></p></li>
-<li><p>Practical proposal, S. Endo <em>et al.</em>, <em>Phys. Rev. X</em>, 2018 <span id="id18">[<a class="reference internal" href="../zz_bibliography.html#id11" title="Suguru Endo, Simon C. Benjamin, and Ying Li. Practical quantum error mitigation for near-future applications. Phys. Rev. X, 8:031027, (2018). URL: https://link.aps.org/doi/10.1103/PhysRevX.8.031027, doi:10.1103/PhysRevX.8.031027.">23</a>]</span></p></li>
-<li><p>Experiment on trapped ions, S. Zhang  <em>et al.</em>, <em>Nature Comm.</em> 2020 <span id="id19">[<a class="reference internal" href="../zz_bibliography.html#id36" title="Shuaining Zhang, Yao Lu, Kuan Zhang, Wentao Chen, Ying Li, Jing-Ning Zhang, and Kihwan Kim. Error-mitigated quantum gates exceeding physical fidelities in a trapped-ion system. Nature Communications, (2020). URL: https://doi.org/10.1038/s41467-020-14376-z, doi:10.1038/s41467-020-14376-z.">24</a>]</span></p></li>
-<li><p>Experiment with gate set tomography on a supeconducting circuit device, J. Sun <em>et al.</em>, 2019 arXiv <span id="id20">[<a class="reference internal" href="../zz_bibliography.html#id31" title="Jinzhao Sun, Xiao Yuan, Takahiro Tsunoda, Vlatko Vedral, Simon C. Benjamin, and Suguru Endo. Mitigating realistic noise in practical noisy intermediate-scale quantum devices. Phys. Rev. Applied, 15:034026, (2021). URL: https://link.aps.org/doi/10.1103/PhysRevApplied.15.034026, doi:10.1103/PhysRevApplied.15.034026.">7</a>]</span></p></li>
+<li><p>Randomized compiling with twirling gates, J. Wallman <em>et al.</em>, <em>Phys. Rev. A</em>, 2016 <span id="id16">[<a class="reference internal" href="../zz_bibliography.html#id42" title="Joel J. Wallman and Joseph Emerson. Noise tailoring for scalable quantum computation via randomized compiling. Phys. Rev. A, 94:052325, (2016). URL: https://link.aps.org/doi/10.1103/PhysRevA.94.052325, doi:10.1103/PhysRevA.94.052325.">16</a>]</span></p></li>
+<li><p>Probabilistic error correction, K. Temme <em>et al.</em>, <em>Phys. Rev. Lett.</em>, 2017 <span id="id17">[<a class="reference internal" href="../zz_bibliography.html#id39" title="Kristan Temme, Sergey Bravyi, and Jay M. Gambetta. Error mitigation for short-depth quantum circuits. Physical Review Letters, (2017). URL: https://doi.org/10.1103/PhysRevLett.119.180509, doi:10.1103/physrevlett.119.180509.">4</a>]</span></p></li>
+<li><p>Practical proposal, S. Endo <em>et al.</em>, <em>Phys. Rev. X</em>, 2018 <span id="id18">[<a class="reference internal" href="../zz_bibliography.html#id13" title="Suguru Endo, Simon C. Benjamin, and Ying Li. Practical quantum error mitigation for near-future applications. Phys. Rev. X, 8:031027, (2018). URL: https://link.aps.org/doi/10.1103/PhysRevX.8.031027, doi:10.1103/PhysRevX.8.031027.">30</a>]</span></p></li>
+<li><p>Experiment on trapped ions, S. Zhang  <em>et al.</em>, <em>Nature Comm.</em> 2020 <span id="id19">[<a class="reference internal" href="../zz_bibliography.html#id43" title="Shuaining Zhang, Yao Lu, Kuan Zhang, Wentao Chen, Ying Li, Jing-Ning Zhang, and Kihwan Kim. Error-mitigated quantum gates exceeding physical fidelities in a trapped-ion system. Nature Communications, (2020). URL: https://doi.org/10.1038/s41467-020-14376-z, doi:10.1038/s41467-020-14376-z.">31</a>]</span></p></li>
+<li><p>Experiment with gate set tomography on a supeconducting circuit device, J. Sun <em>et al.</em>, 2019 arXiv <span id="id20">[<a class="reference internal" href="../zz_bibliography.html#id37" title="Jinzhao Sun, Xiao Yuan, Takahiro Tsunoda, Vlatko Vedral, Simon C. Benjamin, and Suguru Endo. Mitigating realistic noise in practical noisy intermediate-scale quantum devices. Phys. Rev. Applied, 15:034026, (2021). URL: https://link.aps.org/doi/10.1103/PhysRevApplied.15.034026, doi:10.1103/PhysRevApplied.15.034026.">7</a>]</span></p></li>
 </ul>
 </dd>
 </dl>
 </li>
 <li><dl class="simple">
 <dt>On <strong>subspace expansion</strong>:</dt><dd><ul>
-<li><p>By hybrid quantum-classical hierarchy introduction, J. McClean <em>et al.</em>, <em>Phys. Rev. A</em>, 2017 <span id="id21">[<a class="reference internal" href="../zz_bibliography.html#id21" title="Jarrod R. McClean, Mollie E. Kimchi-Schwartz, Jonathan Carter, and Wibe A. de Jong. Hybrid quantum-classical hierarchy for mitigation of decoherence and determination of excited states. Phys. Rev. A, 95:042308, (2017). URL: https://link.aps.org/doi/10.1103/PhysRevA.95.042308, doi:10.1103/PhysRevA.95.042308.">25</a>]</span></p></li>
-<li><p>By symmetry verification, X. Bonet-Monroig <em>et al.</em>, <em>Phys. Rev. A</em>, 2018 <span id="id22">[<a class="reference internal" href="../zz_bibliography.html#id2" title="X. Bonet-Monroig, R. Sagastizabal, M. Singh, and T. E. O'Brien. Low-cost error mitigation by symmetry verification. Phys. Rev. A, 98:062339, (2018). URL: https://link.aps.org/doi/10.1103/PhysRevA.98.062339, doi:10.1103/PhysRevA.98.062339.">26</a>]</span></p></li>
-<li><p>With a stabilizer-like method, S. McArdle <em>et al.</em>, <em>Phys. Rev. Lett.</em>, 2019, <span id="id23">[<a class="reference internal" href="../zz_bibliography.html#id20" title="Sam McArdle, Xiao Yuan, and Simon Benjamin. Error-mitigated digital quantum simulation. Phys. Rev. Lett., 122:180501, (2019). URL: https://link.aps.org/doi/10.1103/PhysRevLett.122.180501, doi:10.1103/PhysRevLett.122.180501.">27</a>]</span></p></li>
-<li><p>Exploiting molecular symmetries, J. McClean <em>et al.</em>, <em>Nat. Comm.</em>, 2020 <span id="id24">[<a class="reference internal" href="../zz_bibliography.html#id22" title="Jarrod R. McClean, Zhang Jiang, Nicholas C. Rubin, Ryan Babbush, and Hartmut Neven. Decoding quantum errors with subspace expansions. Nature Communications, (2020). URL: https://doi.org/10.1038/s41467-020-14341-w, doi:10.1038/s41467-020-14341-w.">28</a>]</span></p></li>
-<li><p>Experiment on a superconducting circuit device, R. Sagastizabal <em>et al.</em>, <em>Phys. Rev. A</em>, 2019 <span id="id25">[<a class="reference internal" href="../zz_bibliography.html#id28" title="R. Sagastizabal, X. Bonet-Monroig, M. Singh, M. A. Rol, C. C. Bultink, X. Fu, C. H. Price, V. P. Ostroukh, N. Muthusubramanian, A. Bruno, M. Beekman, N. Haider, T. E. O'Brien, and L. DiCarlo. Experimental error mitigation via symmetry verification in a variational quantum eigensolver. Phys. Rev. A, 100:010302, (2019). URL: https://link.aps.org/doi/10.1103/PhysRevA.100.010302, doi:10.1103/PhysRevA.100.010302.">29</a>]</span></p></li>
+<li><p>By hybrid quantum-classical hierarchy introduction, J. McClean <em>et al.</em>, <em>Phys. Rev. A</em>, 2017 <span id="id21">[<a class="reference internal" href="../zz_bibliography.html#id25" title="Jarrod R. McClean, Mollie E. Kimchi-Schwartz, Jonathan Carter, and Wibe A. de Jong. Hybrid quantum-classical hierarchy for mitigation of decoherence and determination of excited states. Phys. Rev. A, 95:042308, (2017). URL: https://link.aps.org/doi/10.1103/PhysRevA.95.042308, doi:10.1103/PhysRevA.95.042308.">32</a>]</span></p></li>
+<li><p>By symmetry verification, X. Bonet-Monroig <em>et al.</em>, <em>Phys. Rev. A</em>, 2018 <span id="id22">[<a class="reference internal" href="../zz_bibliography.html#id2" title="X. Bonet-Monroig, R. Sagastizabal, M. Singh, and T. E. O'Brien. Low-cost error mitigation by symmetry verification. Phys. Rev. A, 98:062339, (2018). URL: https://link.aps.org/doi/10.1103/PhysRevA.98.062339, doi:10.1103/PhysRevA.98.062339.">33</a>]</span></p></li>
+<li><p>With a stabilizer-like method, S. McArdle <em>et al.</em>, <em>Phys. Rev. Lett.</em>, 2019, <span id="id23">[<a class="reference internal" href="../zz_bibliography.html#id24" title="Sam McArdle, Xiao Yuan, and Simon Benjamin. Error-mitigated digital quantum simulation. Phys. Rev. Lett., 122:180501, (2019). URL: https://link.aps.org/doi/10.1103/PhysRevLett.122.180501, doi:10.1103/PhysRevLett.122.180501.">34</a>]</span></p></li>
+<li><p>Exploiting molecular symmetries, J. McClean <em>et al.</em>, <em>Nat. Comm.</em>, 2020 <span id="id24">[<a class="reference internal" href="../zz_bibliography.html#id26" title="Jarrod R. McClean, Zhang Jiang, Nicholas C. Rubin, Ryan Babbush, and Hartmut Neven. Decoding quantum errors with subspace expansions. Nature Communications, (2020). URL: https://doi.org/10.1038/s41467-020-14341-w, doi:10.1038/s41467-020-14341-w.">35</a>]</span></p></li>
+<li><p>Experiment on a superconducting circuit device, R. Sagastizabal <em>et al.</em>, <em>Phys. Rev. A</em>, 2019 <span id="id25">[<a class="reference internal" href="../zz_bibliography.html#id33" title="R. Sagastizabal, X. Bonet-Monroig, M. Singh, M. A. Rol, C. C. Bultink, X. Fu, C. H. Price, V. P. Ostroukh, N. Muthusubramanian, A. Bruno, M. Beekman, N. Haider, T. E. O'Brien, and L. DiCarlo. Experimental error mitigation via symmetry verification in a variational quantum eigensolver. Phys. Rev. A, 100:010302, (2019). URL: https://link.aps.org/doi/10.1103/PhysRevA.100.010302, doi:10.1103/PhysRevA.100.010302.">36</a>]</span></p></li>
 </ul>
 </dd>
 </dl>
 </li>
 <li><dl class="simple">
 <dt>On <strong>other error-mitigation techniques</strong> such as:</dt><dd><ul>
-<li><p>Approximate error-correcting codes in the generalized amplitude-damping channels, C. Cafaro <em>et al.</em>, <em>Phys. Rev. A</em>, 2014 <span id="id26">[<a class="reference internal" href="../zz_bibliography.html#id6" title="Carlo Cafaro and Peter van Loock. Approximate quantum error correction for generalized amplitude-damping errors. Phys. Rev. A, 89:022316, (2014). URL: https://link.aps.org/doi/10.1103/PhysRevA.89.022316, doi:10.1103/PhysRevA.89.022316.">30</a>]</span>:</p></li>
-<li><p>Extending the variational quantum eigensolver (VQE) to excited states, R. M. Parrish <em>et al.</em>, <em>Phys. Rev. Lett.</em>, 2017 <span id="id27">[<a class="reference internal" href="../zz_bibliography.html#id25" title="Robert M. Parrish, Edward G. Hohenstein, Peter L. McMahon, and Todd J. Mart\'ınez. Quantum computation of electronic transitions using a variational quantum eigensolver. Phys. Rev. Lett., 122:230401, (2019). URL: https://link.aps.org/doi/10.1103/PhysRevLett.122.230401, doi:10.1103/PhysRevLett.122.230401.">31</a>]</span></p></li>
-<li><p>Quantum imaginary time evolution, M. Motta <em>et al.</em>, <em>Nat. Phys.</em>, 2020 <span id="id28">[<a class="reference internal" href="../zz_bibliography.html#id23" title="Mario Motta, Chong Sun, Adrian T. K. Tan, Matthew J. O'Rourke, Erika Ye, Austin J. Minnich, Fernando G. S. L. Brandão, and Garnet Kin-Lic Chan. Publisher correction: determining eigenstates and thermal states on a quantum computer using quantum imaginary time evolution. Nature Physics, 16(2):231–231, (2020). URL: https://doi.org/10.1038/s41567-019-0756-5, doi:10.1038/s41567-019-0756-5.">32</a>]</span></p></li>
-<li><p>Error mitigation for analog quantum simulation, J. Sun <em>et al.</em>, 2020, arXiv <span id="id29">[<a class="reference internal" href="../zz_bibliography.html#id31" title="Jinzhao Sun, Xiao Yuan, Takahiro Tsunoda, Vlatko Vedral, Simon C. Benjamin, and Suguru Endo. Mitigating realistic noise in practical noisy intermediate-scale quantum devices. Phys. Rev. Applied, 15:034026, (2021). URL: https://link.aps.org/doi/10.1103/PhysRevApplied.15.034026, doi:10.1103/PhysRevApplied.15.034026.">7</a>]</span></p></li>
+<li><p>Approximate error-correcting codes in the generalized amplitude-damping channels, C. Cafaro <em>et al.</em>, <em>Phys. Rev. A</em>, 2014 <span id="id26">[<a class="reference internal" href="../zz_bibliography.html#id6" title="Carlo Cafaro and Peter van Loock. Approximate quantum error correction for generalized amplitude-damping errors. Phys. Rev. A, 89:022316, (2014). URL: https://link.aps.org/doi/10.1103/PhysRevA.89.022316, doi:10.1103/PhysRevA.89.022316.">37</a>]</span>:</p></li>
+<li><p>Extending the variational quantum eigensolver (VQE) to excited states, R. M. Parrish <em>et al.</em>, <em>Phys. Rev. Lett.</em>, 2017 <span id="id27">[<a class="reference internal" href="../zz_bibliography.html#id29" title="Robert M. Parrish, Edward G. Hohenstein, Peter L. McMahon, and Todd J. Mart\'ınez. Quantum computation of electronic transitions using a variational quantum eigensolver. Phys. Rev. Lett., 122:230401, (2019). URL: https://link.aps.org/doi/10.1103/PhysRevLett.122.230401, doi:10.1103/PhysRevLett.122.230401.">38</a>]</span></p></li>
+<li><p>Quantum imaginary time evolution, M. Motta <em>et al.</em>, <em>Nat. Phys.</em>, 2020 <span id="id28">[<a class="reference internal" href="../zz_bibliography.html#id27" title="Mario Motta, Chong Sun, Adrian T. K. Tan, Matthew J. O'Rourke, Erika Ye, Austin J. Minnich, Fernando G. S. L. Brandão, and Garnet Kin-Lic Chan. Publisher correction: determining eigenstates and thermal states on a quantum computer using quantum imaginary time evolution. Nature Physics, 16(2):231–231, (2020). URL: https://doi.org/10.1038/s41567-019-0756-5, doi:10.1038/s41567-019-0756-5.">39</a>]</span></p></li>
+<li><p>Error mitigation for analog quantum simulation, J. Sun <em>et al.</em>, 2020, arXiv <span id="id29">[<a class="reference internal" href="../zz_bibliography.html#id37" title="Jinzhao Sun, Xiao Yuan, Takahiro Tsunoda, Vlatko Vedral, Simon C. Benjamin, and Suguru Endo. Mitigating realistic noise in practical noisy intermediate-scale quantum devices. Phys. Rev. Applied, 15:034026, (2021). URL: https://link.aps.org/doi/10.1103/PhysRevApplied.15.034026, doi:10.1103/PhysRevApplied.15.034026.">7</a>]</span></p></li>
 </ul>
 </dd>
 </dl>
 </li>
-<li><p>For an extensive introduction: S. Endo, <em>Hybrid quantum-classical algorithms and error mitigation</em>, PhD Thesis, 2019, Oxford University (<a class="reference external" href="https://ora.ox.ac.uk/objects/uuid:6733c0f6-1b19-4d12-a899-18946aa5df85">Link</a>), or <span id="id30">[<a class="reference internal" href="../zz_bibliography.html#id12" title="Suguru Endo, Zhenyu Cai, Simon C. Benjamin, and Xiao Yuan. Hybrid quantum-classical algorithms and quantum error mitigation. Journal of the Physical Society of Japan, 90(3):032001, (2021). URL: http://dx.doi.org/10.7566/JPSJ.90.032001, doi:10.7566/jpsj.90.032001.">12</a>]</span>.</p></li>
+<li><p>For an extensive introduction: S. Endo, <em>Hybrid quantum-classical algorithms and error mitigation</em>, PhD Thesis, 2019, Oxford University (<a class="reference external" href="https://ora.ox.ac.uk/objects/uuid:6733c0f6-1b19-4d12-a899-18946aa5df85">Link</a>), or <span id="id30">[<a class="reference internal" href="../zz_bibliography.html#id14" title="Suguru Endo, Zhenyu Cai, Simon C. Benjamin, and Xiao Yuan. Hybrid quantum-classical algorithms and quantum error mitigation. Journal of the Physical Society of Japan, 90(3):032001, (2021). URL: http://dx.doi.org/10.7566/JPSJ.90.032001, doi:10.7566/jpsj.90.032001.">22</a>]</span>.</p></li>
 </ul>
 </div>
 <div class="section" id="software">
@@ -674,11 +711,11 @@ can be found <a class="reference external" href="https://github.com/qosf/awesome
               
               <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="cdr-5-theory.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="ddd-5-theory.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">What is the theory behind CDR?</p>
+            <p class="prev-next-title">What is the theory behind DDD?</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="../examples/examples.html" title="next page">

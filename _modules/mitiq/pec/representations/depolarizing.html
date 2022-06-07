@@ -8,7 +8,7 @@ in the top right corner -->
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>mitiq.pec.representations.depolarizing &#8212; Mitiq 0.15.0dev documentation</title>
+    <title>mitiq.pec.representations.depolarizing &#8212; Mitiq 0.17.0dev documentation</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../../../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -195,7 +195,7 @@ in the top right corner -->
 <span class="c1"># along with this program.  If not, see &lt;https://www.gnu.org/licenses/&gt;.</span>
 <span class="sd">&quot;&quot;&quot;Functions related to representations with depolarizing noise.&quot;&quot;&quot;</span>
 
-
+<span class="kn">import</span> <span class="nn">copy</span>
 <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span>
 <span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">product</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -212,8 +212,12 @@ in the top right corner -->
 <span class="p">)</span>
 
 <span class="kn">from</span> <span class="nn">mitiq</span> <span class="kn">import</span> <span class="n">QPROGRAM</span>
+<span class="kn">from</span> <span class="nn">mitiq.interface.conversions</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">convert_to_mitiq</span><span class="p">,</span>
+    <span class="n">append_cirq_circuit_to_qprogram</span><span class="p">,</span>
+<span class="p">)</span>
 <span class="kn">from</span> <span class="nn">mitiq.pec.types</span> <span class="kn">import</span> <span class="n">OperationRepresentation</span><span class="p">,</span> <span class="n">NoisyOperation</span>
-<span class="kn">from</span> <span class="nn">mitiq.interface</span> <span class="kn">import</span> <span class="n">convert_to_mitiq</span><span class="p">,</span> <span class="n">convert_from_mitiq</span>
+
 
 <span class="kn">from</span> <span class="nn">mitiq.pec.channels</span> <span class="kn">import</span> <span class="n">tensor_product</span>
 
@@ -279,10 +283,10 @@ in the top right corner -->
 <span class="sd">        QPROGRAM, followed by a single final depolarizing channel, is</span>
 <span class="sd">        physically implementable.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">circ</span><span class="p">,</span> <span class="n">in_type</span> <span class="o">=</span> <span class="n">convert_to_mitiq</span><span class="p">(</span><span class="n">ideal_operation</span><span class="p">)</span>
-
+    <span class="n">circuit_copy</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="n">ideal_operation</span><span class="p">)</span>
+    <span class="n">converted_circ</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">convert_to_mitiq</span><span class="p">(</span><span class="n">circuit_copy</span><span class="p">)</span>
     <span class="n">post_ops</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">Operation</span><span class="p">]]</span>
-    <span class="n">qubits</span> <span class="o">=</span> <span class="n">circ</span><span class="o">.</span><span class="n">all_qubits</span><span class="p">()</span>
+    <span class="n">qubits</span> <span class="o">=</span> <span class="n">converted_circ</span><span class="o">.</span><span class="n">all_qubits</span><span class="p">()</span>
 
     <span class="c1"># The single-qubit case: linear combination of 1Q Paulis</span>
     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">qubits</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
@@ -318,11 +322,15 @@ in the top right corner -->
             <span class="s2">&quot;Consider pre-compiling your circuit.&quot;</span>
         <span class="p">)</span>
 
-    <span class="c1"># Basis of implementable operations as circuits.</span>
-    <span class="n">imp_op_circuits</span> <span class="o">=</span> <span class="p">[</span><span class="n">circ</span> <span class="o">+</span> <span class="n">Circuit</span><span class="p">(</span><span class="n">op</span><span class="p">)</span> <span class="k">for</span> <span class="n">op</span> <span class="ow">in</span> <span class="n">post_ops</span><span class="p">]</span>
+    <span class="c1"># Basis of implementable operations as circuits</span>
 
-    <span class="c1"># Convert back to input type.</span>
-    <span class="n">imp_op_circuits</span> <span class="o">=</span> <span class="p">[</span><span class="n">convert_from_mitiq</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">in_type</span><span class="p">)</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">imp_op_circuits</span><span class="p">]</span>
+    <span class="n">imp_op_circuits</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="n">append_cirq_circuit_to_qprogram</span><span class="p">(</span>
+            <span class="n">ideal_operation</span><span class="p">,</span>
+            <span class="n">Circuit</span><span class="p">(</span><span class="n">op</span><span class="p">),</span>
+        <span class="p">)</span>
+        <span class="k">for</span> <span class="n">op</span> <span class="ow">in</span> <span class="n">post_ops</span>
+    <span class="p">]</span>
 
     <span class="c1"># Build basis expansion.</span>
     <span class="n">expansion</span> <span class="o">=</span> <span class="p">{</span><span class="n">NoisyOperation</span><span class="p">(</span><span class="n">c</span><span class="p">):</span> <span class="n">a</span> <span class="k">for</span> <span class="n">c</span><span class="p">,</span> <span class="n">a</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">imp_op_circuits</span><span class="p">,</span> <span class="n">alphas</span><span class="p">)}</span>
@@ -372,9 +380,10 @@ in the top right corner -->
 <span class="sd">        *Phys. Rev. Lett.* **119**, 180509 (2017),</span>
 <span class="sd">        (https://arxiv.org/abs/1612.02058).</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">circ</span><span class="p">,</span> <span class="n">in_type</span> <span class="o">=</span> <span class="n">convert_to_mitiq</span><span class="p">(</span><span class="n">ideal_operation</span><span class="p">)</span>
+    <span class="n">circuit_copy</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="n">ideal_operation</span><span class="p">)</span>
+    <span class="n">converted_circ</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">convert_to_mitiq</span><span class="p">(</span><span class="n">circuit_copy</span><span class="p">)</span>
 
-    <span class="n">qubits</span> <span class="o">=</span> <span class="n">circ</span><span class="o">.</span><span class="n">all_qubits</span><span class="p">()</span>
+    <span class="n">qubits</span> <span class="o">=</span> <span class="n">converted_circ</span><span class="o">.</span><span class="n">all_qubits</span><span class="p">()</span>
 
     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">qubits</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">represent_operation_with_global_depolarizing_noise</span><span class="p">(</span>
@@ -395,18 +404,27 @@ in the top right corner -->
         <span class="n">alphas</span> <span class="o">=</span> <span class="p">[]</span>
 
         <span class="c1"># The zero-pauli term in the linear combination</span>
-        <span class="n">imp_op_circuits</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">circ</span><span class="p">)</span>
+        <span class="n">imp_op_circuits</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">converted_circ</span><span class="p">)</span>
         <span class="n">alphas</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">c_pos</span> <span class="o">*</span> <span class="n">c_pos</span><span class="p">)</span>
 
         <span class="c1"># The single-pauli terms in the linear combination</span>
         <span class="k">for</span> <span class="n">qubit</span> <span class="ow">in</span> <span class="n">qubits</span><span class="p">:</span>
             <span class="k">for</span> <span class="n">pauli</span> <span class="ow">in</span> <span class="p">[</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">Z</span><span class="p">]:</span>
-                <span class="n">imp_op_circuits</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">circ</span> <span class="o">+</span> <span class="n">Circuit</span><span class="p">(</span><span class="n">pauli</span><span class="p">(</span><span class="n">qubit</span><span class="p">)))</span>
+                <span class="n">imp_op_circuits</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                    <span class="n">append_cirq_circuit_to_qprogram</span><span class="p">(</span>
+                        <span class="n">ideal_operation</span><span class="p">,</span> <span class="n">Circuit</span><span class="p">(</span><span class="n">pauli</span><span class="p">(</span><span class="n">qubit</span><span class="p">))</span>
+                    <span class="p">)</span>
+                <span class="p">)</span>
                 <span class="n">alphas</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">c_neg</span> <span class="o">*</span> <span class="n">c_pos</span><span class="p">)</span>
 
         <span class="c1"># The two-pauli terms in the linear combination</span>
         <span class="k">for</span> <span class="n">pauli_0</span><span class="p">,</span> <span class="n">pauli_1</span> <span class="ow">in</span> <span class="n">product</span><span class="p">([</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">Z</span><span class="p">],</span> <span class="n">repeat</span><span class="o">=</span><span class="mi">2</span><span class="p">):</span>
-            <span class="n">imp_op_circuits</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">circ</span> <span class="o">+</span> <span class="n">Circuit</span><span class="p">(</span><span class="n">pauli_0</span><span class="p">(</span><span class="n">q0</span><span class="p">),</span> <span class="n">pauli_1</span><span class="p">(</span><span class="n">q1</span><span class="p">)))</span>
+            <span class="n">imp_op_circuits</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                <span class="n">append_cirq_circuit_to_qprogram</span><span class="p">(</span>
+                    <span class="n">ideal_operation</span><span class="p">,</span>
+                    <span class="n">Circuit</span><span class="p">(</span><span class="n">pauli_0</span><span class="p">(</span><span class="n">q0</span><span class="p">),</span> <span class="n">pauli_1</span><span class="p">(</span><span class="n">q1</span><span class="p">)),</span>
+                <span class="p">)</span>
+            <span class="p">)</span>
             <span class="n">alphas</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">c_neg</span> <span class="o">*</span> <span class="n">c_neg</span><span class="p">)</span>
 
     <span class="k">else</span><span class="p">:</span>
@@ -415,11 +433,8 @@ in the top right corner -->
             <span class="s2">&quot;Consider pre-compiling your circuit.&quot;</span>
         <span class="p">)</span>
 
-    <span class="c1"># Convert back to input type.</span>
-    <span class="n">circuits</span> <span class="o">=</span> <span class="p">[</span><span class="n">convert_from_mitiq</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">in_type</span><span class="p">)</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">imp_op_circuits</span><span class="p">]</span>
-
     <span class="c1"># Build basis expansion.</span>
-    <span class="n">expansion</span> <span class="o">=</span> <span class="p">{</span><span class="n">NoisyOperation</span><span class="p">(</span><span class="n">c</span><span class="p">):</span> <span class="n">a</span> <span class="k">for</span> <span class="n">c</span><span class="p">,</span> <span class="n">a</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">circuits</span><span class="p">,</span> <span class="n">alphas</span><span class="p">)}</span>
+    <span class="n">expansion</span> <span class="o">=</span> <span class="p">{</span><span class="n">NoisyOperation</span><span class="p">(</span><span class="n">c</span><span class="p">):</span> <span class="n">a</span> <span class="k">for</span> <span class="n">c</span><span class="p">,</span> <span class="n">a</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">imp_op_circuits</span><span class="p">,</span> <span class="n">alphas</span><span class="p">)}</span>
 
     <span class="k">return</span> <span class="n">OperationRepresentation</span><span class="p">(</span><span class="n">ideal_operation</span><span class="p">,</span> <span class="n">expansion</span><span class="p">)</span></div>
 

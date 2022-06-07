@@ -8,7 +8,7 @@ in the top right corner -->
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>mitiq.ddd.rules.rules &#8212; Mitiq 0.15.0dev documentation</title>
+    <title>mitiq.ddd.rules.rules &#8212; Mitiq 0.17.0dev documentation</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../../../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -223,12 +223,12 @@ in the top right corner -->
 <span class="sd">            decoupling gates, as a non-negative int. Negative int corresponds</span>
 <span class="sd">            to default. Defaults to maximal spacing that fits a single sequence</span>
 <span class="sd">            in the given slack window.</span>
-<span class="sd">            E.g. given slack_length = 20, gates = [X, X] the spacing defaults</span>
-<span class="sd">            to 6 and the rule returns the sequence:</span>
-<span class="sd">            ──I──I──I──I──I──I──X──I──I──I──I──I──I──X──I──I──I──I──I──I──</span>
-<span class="sd">            given slack_length = 20, gates [X, Y, X, Y] the spacing defaults</span>
-<span class="sd">            to 3 and the rule returns the sequence:</span>
-<span class="sd">            ──I──I──I──I──X──I──I──I──Y──I──I──I──X──I──I──I──Y──I──I──I──</span>
+<span class="sd">            E.g. given slack_length = 8, gates = [X, X] the spacing defaults</span>
+<span class="sd">            to 2 and the rule returns the sequence:</span>
+<span class="sd">            ──I──I──X──I──I──X──I──I──</span>
+<span class="sd">            given slack_length = 9, gates [X, Y, X, Y] the spacing defaults</span>
+<span class="sd">            to 1 and the rule returns the sequence:</span>
+<span class="sd">            ──I──X──I──Y──I──X──I──Y──I──.</span>
 <span class="sd">        gates: A list of single qubit Cirq gates to build the rule. E.g. [X, X]</span>
 <span class="sd">            is the xx sequence, [X, Y, X, Y] is the xyxy sequence.</span>
 <span class="sd">            - Note: To repeat the sequence, specify a repeated gateset.</span>
@@ -276,9 +276,9 @@ in the top right corner -->
 <span class="sd">            decoupling gates, as a non-negative int. Negative int corresponds</span>
 <span class="sd">            to default. Defaults to maximal spacing that fits a single sequence</span>
 <span class="sd">            in the given slack window.</span>
-<span class="sd">            E.g. given slack_length = 20 the spacing defaults to 6 and this</span>
+<span class="sd">            E.g. given slack_length = 8 the spacing defaults to 2 and this</span>
 <span class="sd">            rule returns the sequence:</span>
-<span class="sd">            ──I──I──I──I──I──I──X──I──I──I──I──I──I──X──I──I──I──I──I──I──</span>
+<span class="sd">            ──I──I──X──I──I──X──I──I──.</span>
 <span class="sd">    Returns:</span>
 <span class="sd">        An XX digital dynamical decoupling sequence, as a Cirq circuit.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -299,9 +299,9 @@ in the top right corner -->
 <span class="sd">            decoupling gates, as a non-negative int. Negative int corresponds</span>
 <span class="sd">            to default. Defaults to maximal spacing that fits a single sequence</span>
 <span class="sd">            in the given slack window.</span>
-<span class="sd">            E.g. given slack_length = 20 the spacing defaults to 3 and this</span>
+<span class="sd">            E.g. given slack_length = 9 the spacing defaults to 1 and this</span>
 <span class="sd">            rule returns the sequence:</span>
-<span class="sd">            ──I──I──I──I──X──I──I──I──Y──I──I──I──X──I──I──I──Y──I──I──I──</span>
+<span class="sd">            ──I──X──I──Y──I──X──I──Y──I──.</span>
 <span class="sd">    Returns:</span>
 <span class="sd">        An XYXY digital dynamical decoupling sequence, as a Cirq circuit.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -322,9 +322,9 @@ in the top right corner -->
 <span class="sd">            decoupling gates, as a non-negative int. Negative int corresponds</span>
 <span class="sd">            to default. Defaults to maximal spacing that fits a single sequence</span>
 <span class="sd">            in the given slack window.</span>
-<span class="sd">            E.g. given slack_length = 20 the spacing defaults to 6 and</span>
+<span class="sd">            E.g. given slack_length = 8 the spacing defaults to 2 and</span>
 <span class="sd">            this rule returns the sequence:</span>
-<span class="sd">            ──I──I──I──I──I──I──Y──I──I──I──I──I──I──Y──I──I──I──I──I──I──</span>
+<span class="sd">            ──I──I──Y──I──I──Y──I──I──.</span>
 <span class="sd">    Returns:</span>
 <span class="sd">        An YY digital dynamical decoupling sequence, as a Cirq circuit.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -351,10 +351,12 @@ in the top right corner -->
 <span class="sd">        Where :func:`.general_rule()` fills a slack window with a single</span>
 <span class="sd">        sequence, this rule attempts to fill every moment with sequence</span>
 <span class="sd">        repetitions (up to a complete repetition of the gate set).</span>
-<span class="sd">        E.g. given slack_length = 17 and gates = [X, Y], this rule returns</span>
-<span class="sd">        the sequence: ──I──X──Y──X──Y──X──Y──X──Y──X──Y──X──Y──X──Y──X──Y──</span>
+<span class="sd">        E.g. given slack_length = 8 and gates = [X, Y, X, Y], this rule returns</span>
+<span class="sd">        the sequence: ──X──Y──X──Y──X──Y──X──Y──.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">num_decoupling_gates</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">gates</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">num_decoupling_gates</span> <span class="o">&gt;</span> <span class="n">slack_length</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">Circuit</span><span class="p">()</span>
     <span class="n">sequence</span> <span class="o">=</span> <span class="n">general_rule</span><span class="p">(</span>
         <span class="n">slack_length</span><span class="o">=</span><span class="n">slack_length</span><span class="p">,</span>
         <span class="n">spacing</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>

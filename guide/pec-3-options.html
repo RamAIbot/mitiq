@@ -8,7 +8,7 @@ in the top right corner -->
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>What additional options are available in PEC? &#8212; Mitiq 0.15.0dev documentation</title>
+    <title>What additional options are available in PEC? &#8212; Mitiq 0.17.0dev documentation</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -292,6 +292,43 @@ in the top right corner -->
    <li class="toctree-l2">
     <a class="reference internal" href="cdr-5-theory.html">
      What is the theory behind CDR?
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="ddd.html">
+   Digital Dynamical Decoupling
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ddd-1-intro.html">
+     How do I use DDD?
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ddd-2-use-case.html">
+     When should I use DDD?
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ddd-3-options.html">
+     What additional options are available when using DDD?
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ddd-4-low-level.html">
+     What happens when I use DDD?
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ddd-5-theory.html">
+     What is the theory behind DDD?
     </a>
    </li>
   </ul>
@@ -590,7 +627,7 @@ in the basis of the noisy implementable gates (<code class="docutils literal not
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Optimal representation:
-q_0: ───H─── = -0.091*(q_0: ───H───Y───)+1.273*(q_0: ───H───)-0.091*(q_0: ───H───Z───)-0.091*(q_0: ───H───X───)
+q_0: ───H─── = 1.273*(q_0: ───H───)-0.091*(q_0: ───H───Z───)-0.091*(q_0: ───H───X───)-0.091*(q_0: ───H───Y───)
 </pre></div>
 </div>
 </div>
@@ -667,8 +704,8 @@ should be multiplied by the sign of the associated coefficient <span class="math
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The sampled noisy operation is: q_0: ───H───.
-The associated coefficient is 1.27273, whose sign is 1.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The sampled noisy operation is: q_0: ───H───X───.
+The associated coefficient is -0.0909091, whose sign is -1.
 </pre></div>
 </div>
 </div>
@@ -697,7 +734,7 @@ The associated coefficient is 1.27273, whose sign is 1.
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(-0.09090908909091, 1.272727247272726, -0.09090908909090956, -0.09090908909090911)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(1.2727272472727287, -0.09090908909090933, -0.09090908909090833, -0.09090908909090889)
 </pre></div>
 </div>
 </div>
@@ -710,7 +747,7 @@ The associated coefficient is 1.27273, whose sign is 1.
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.05882353, 0.82352941, 0.05882353, 0.05882353])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.82352941, 0.05882353, 0.05882353, 0.05882353])
 </pre></div>
 </div>
 </div>
@@ -865,21 +902,21 @@ q: ┤ H ├┤ H ├┤ H ├┤ H ├
    ┌───┐┌───┐┌───┐┌───┐
 q: ┤ H ├┤ H ├┤ H ├┤ H ├
    └───┘└───┘└───┘└───┘
-   ┌───┐┌───┐┌───┐┌───┐┌───┐
-q: ┤ H ├┤ H ├┤ H ├┤ Y ├┤ H ├
-   └───┘└───┘└───┘└───┘└───┘
-   ┌───┐┌───┐┌───┐┌───┐┌───┐
-q: ┤ H ├┤ H ├┤ H ├┤ Z ├┤ H ├
-   └───┘└───┘└───┘└───┘└───┘
-   ┌───┐┌───┐┌───┐┌───┐┌───┐
-q: ┤ H ├┤ H ├┤ H ├┤ H ├┤ Y ├
-   └───┘└───┘└───┘└───┘└───┘
+   ┌───┐┌───┐┌───┐┌───┐
+q: ┤ H ├┤ H ├┤ H ├┤ H ├
+   └───┘└───┘└───┘└───┘
+   ┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐
+q: ┤ H ├┤ H ├┤ H ├┤ X ├┤ H ├┤ Z ├
+   └───┘└───┘└───┘└───┘└───┘└───┘
+   ┌───┐┌───┐┌───┐┌───┐
+q: ┤ H ├┤ H ├┤ H ├┤ H ├
+   └───┘└───┘└───┘└───┘
 The corresponding noisy expectation values are:
 0.7047999999999993
 0.7047999999999993
-0.3361599999999998
-0.3361599999999998
-0.33615999999999974
+0.7047999999999993
+0.6310719999999995
+0.7047999999999993
 </pre></div>
 </div>
 </div>
@@ -924,9 +961,9 @@ For example, the first 5 unbiased samples are:</p>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[4.020599418806919,
  4.020599418806919,
- -1.917657066722665,
- -1.917657066722665,
- -1.9176570667226647]
+ 4.020599418806919,
+ 3.6000109483900684,
+ 4.020599418806919]
 </pre></div>
 </div>
 </div>
@@ -941,7 +978,7 @@ the standard deviation of the unbiased samples, i.e., the square root of the mea
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.2682576907678216
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.2814651338079106
 </pre></div>
 </div>
 </div>

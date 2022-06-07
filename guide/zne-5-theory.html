@@ -8,7 +8,7 @@ in the top right corner -->
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>What is the theory behind ZNE? &#8212; Mitiq 0.15.0dev documentation</title>
+    <title>What is the theory behind ZNE? &#8212; Mitiq 0.17.0dev documentation</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -296,6 +296,43 @@ in the top right corner -->
    </li>
   </ul>
  </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="ddd.html">
+   Digital Dynamical Decoupling
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ddd-1-intro.html">
+     How do I use DDD?
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ddd-2-use-case.html">
+     When should I use DDD?
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ddd-3-options.html">
+     What additional options are available when using DDD?
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ddd-4-low-level.html">
+     What happens when I use DDD?
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ddd-5-theory.html">
+     What is the theory behind DDD?
+    </a>
+   </li>
+  </ul>
+ </li>
  <li class="toctree-l1">
   <a class="reference internal" href="error-mitigation.html">
    About Error Mitigation
@@ -358,15 +395,15 @@ in the top right corner -->
                 
   <div class="section" id="what-is-the-theory-behind-zne">
 <h1>What is the theory behind ZNE?<a class="headerlink" href="#what-is-the-theory-behind-zne" title="Permalink to this headline">#</a></h1>
-<p>Zero noise extrapolation (ZNE) <span id="id1">[<a class="reference internal" href="../zz_bibliography.html#id17" title="Ying Li and Simon C. Benjamin. Efficient variational quantum simulator incorporating active error minimization. Phys. Rev. X, 7:021050, (2017). URL: https://link.aps.org/doi/10.1103/PhysRevX.7.021050, doi:10.1103/PhysRevX.7.021050.">3</a>, <a class="reference internal" href="../zz_bibliography.html#id33" title="Kristan Temme, Sergey Bravyi, and Jay M. Gambetta. Error mitigation for short-depth quantum circuits. Physical Review Letters, (2017). URL: https://doi.org/10.1103/PhysRevLett.119.180509, doi:10.1103/physrevlett.119.180509.">4</a>, <a class="reference internal" href="../zz_bibliography.html#id15" title="Abhinav Kandala, Kristan Temme, Antonio D. Córcoles, Antonio Mezzacapo, Jerry M. Chow, and Jay M. Gambetta. Error mitigation extends the computational reach of a noisy quantum processor. Nature, 567(7749):491–495, (2019). URL: https://doi.org/10.1038/s41586-019-1040-7, doi:10.1038/s41586-019-1040-7.">5</a>]</span> is an error
+<p>Zero noise extrapolation (ZNE) <span id="id1">[<a class="reference internal" href="../zz_bibliography.html#id21" title="Ying Li and Simon C. Benjamin. Efficient variational quantum simulator incorporating active error minimization. Phys. Rev. X, 7:021050, (2017). URL: https://link.aps.org/doi/10.1103/PhysRevX.7.021050, doi:10.1103/PhysRevX.7.021050.">3</a>, <a class="reference internal" href="../zz_bibliography.html#id39" title="Kristan Temme, Sergey Bravyi, and Jay M. Gambetta. Error mitigation for short-depth quantum circuits. Physical Review Letters, (2017). URL: https://doi.org/10.1103/PhysRevLett.119.180509, doi:10.1103/physrevlett.119.180509.">4</a>, <a class="reference internal" href="../zz_bibliography.html#id19" title="Abhinav Kandala, Kristan Temme, Antonio D. Córcoles, Antonio Mezzacapo, Jerry M. Chow, and Jay M. Gambetta. Error mitigation extends the computational reach of a noisy quantum processor. Nature, 567(7749):491–495, (2019). URL: https://doi.org/10.1038/s41586-019-1040-7, doi:10.1038/s41586-019-1040-7.">5</a>]</span> is an error
 mitigation technique used to extrapolate the noiseless expectation value of an
 observable from a range of expectation values computed at different noise levels.
 This process works in two steps:</p>
 <ul class="simple">
 <li><p><strong>Step 1: Intentionally scale noise</strong>. This can be done with different methods.
-<em>Pulse-stretching</em> <span id="id2">[<a class="reference internal" href="../zz_bibliography.html#id33" title="Kristan Temme, Sergey Bravyi, and Jay M. Gambetta. Error mitigation for short-depth quantum circuits. Physical Review Letters, (2017). URL: https://doi.org/10.1103/PhysRevLett.119.180509, doi:10.1103/physrevlett.119.180509.">4</a>]</span> can be used to increase the noise level
+<em>Pulse-stretching</em> <span id="id2">[<a class="reference internal" href="../zz_bibliography.html#id39" title="Kristan Temme, Sergey Bravyi, and Jay M. Gambetta. Error mitigation for short-depth quantum circuits. Physical Review Letters, (2017). URL: https://doi.org/10.1103/PhysRevLett.119.180509, doi:10.1103/physrevlett.119.180509.">4</a>]</span> can be used to increase the noise level
 of a quantum computation. Similar results can be obtained, at a gate-level, with <em>unitary folding</em>
-<span id="id3">[<a class="reference internal" href="../zz_bibliography.html#id17" title="Ying Li and Simon C. Benjamin. Efficient variational quantum simulator incorporating active error minimization. Phys. Rev. X, 7:021050, (2017). URL: https://link.aps.org/doi/10.1103/PhysRevX.7.021050, doi:10.1103/PhysRevX.7.021050.">3</a>, <a class="reference internal" href="../zz_bibliography.html#id14" title="Tudor Giurgica-Tiron, Yousef Hindy, Ryan LaRose, Andrea Mari, and William J. Zeng. Digital zero noise extrapolation for quantum error mitigation. (2020). arXiv:2005.10921.">6</a>]</span>.</p></li>
+<span id="id3">[<a class="reference internal" href="../zz_bibliography.html#id21" title="Ying Li and Simon C. Benjamin. Efficient variational quantum simulator incorporating active error minimization. Phys. Rev. X, 7:021050, (2017). URL: https://link.aps.org/doi/10.1103/PhysRevX.7.021050, doi:10.1103/PhysRevX.7.021050.">3</a>, <a class="reference internal" href="../zz_bibliography.html#id16" title="Tudor Giurgica-Tiron, Yousef Hindy, Ryan LaRose, Andrea Mari, and William J. Zeng. Digital zero noise extrapolation for quantum error mitigation. (2020). arXiv:2005.10921.">6</a>]</span>.</p></li>
 <li><p><strong>Step 2: Extrapolate to the noiseless limit</strong>. This can be done by
 fitting a curve (often called <em>extrapolation model</em>) to the expectation values measured at different noise levels
 to extrapolate the noiseless expectation value.</p></li>
@@ -384,11 +421,11 @@ This mapping can be applied <em>globally</em> or <em>locally</em> as shown in th
 <a class="reference internal image-reference" href="../_images/zne_local_folding.png"><img alt="../_images/zne_local_folding.png" src="../_images/zne_local_folding.png" style="width: 500px;" /></a>
 <p class="caption"><span class="caption-text">The diagram demonstrates how gates are inserted in a circuit when <em>local folding</em> is applied.</span><a class="headerlink" href="#figzne-local" title="Permalink to this image">#</a></p>
 </div>
-<p>More details on the theory of unitary folding can be found in <span id="id4">[<a class="reference internal" href="../zz_bibliography.html#id14" title="Tudor Giurgica-Tiron, Yousef Hindy, Ryan LaRose, Andrea Mari, and William J. Zeng. Digital zero noise extrapolation for quantum error mitigation. (2020). arXiv:2005.10921.">6</a>]</span>.
+<p>More details on the theory of unitary folding can be found in <span id="id4">[<a class="reference internal" href="../zz_bibliography.html#id16" title="Tudor Giurgica-Tiron, Yousef Hindy, Ryan LaRose, Andrea Mari, and William J. Zeng. Digital zero noise extrapolation for quantum error mitigation. (2020). arXiv:2005.10921.">6</a>]</span>.
 More details on its practical implementation in Mitiq can be found in
 <a class="reference internal" href="zne-3-options.html"><span class="doc std std-doc">What additional options are available for ZNE?</span></a>.</p>
 <p>A noise scaling technique similar to unitary folding is <em>pulse-stretching</em>: a method that only applies to
-devices with pulse-level access <span id="id5">[<a class="reference internal" href="../zz_bibliography.html#id33" title="Kristan Temme, Sergey Bravyi, and Jay M. Gambetta. Error mitigation for short-depth quantum circuits. Physical Review Letters, (2017). URL: https://doi.org/10.1103/PhysRevLett.119.180509, doi:10.1103/physrevlett.119.180509.">4</a>, <a class="reference internal" href="../zz_bibliography.html#id15" title="Abhinav Kandala, Kristan Temme, Antonio D. Córcoles, Antonio Mezzacapo, Jerry M. Chow, and Jay M. Gambetta. Error mitigation extends the computational reach of a noisy quantum processor. Nature, 567(7749):491–495, (2019). URL: https://doi.org/10.1038/s41586-019-1040-7, doi:10.1038/s41586-019-1040-7.">5</a>]</span>.
+devices with pulse-level access <span id="id5">[<a class="reference internal" href="../zz_bibliography.html#id39" title="Kristan Temme, Sergey Bravyi, and Jay M. Gambetta. Error mitigation for short-depth quantum circuits. Physical Review Letters, (2017). URL: https://doi.org/10.1103/PhysRevLett.119.180509, doi:10.1103/physrevlett.119.180509.">4</a>, <a class="reference internal" href="../zz_bibliography.html#id19" title="Abhinav Kandala, Kristan Temme, Antonio D. Córcoles, Antonio Mezzacapo, Jerry M. Chow, and Jay M. Gambetta. Error mitigation extends the computational reach of a noisy quantum processor. Nature, 567(7749):491–495, (2019). URL: https://doi.org/10.1038/s41586-019-1040-7, doi:10.1038/s41586-019-1040-7.">5</a>]</span>.
 The noise of the device can be altered by increasing the time over which pulses
 are implemented, as shown in the following diagram:</p>
 <div class="figure align-default" id="figzne-pulse">

@@ -8,7 +8,7 @@ in the top right corner -->
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Mitiq Git flow &#8212; Mitiq 0.15.0dev documentation</title>
+    <title>Mitiq Git flow &#8212; Mitiq 0.17.0dev documentation</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -297,12 +297,14 @@ proper milestone.</p>
 version number of the release.
 Development work is done on separate branches and forks that get merged into
 <code class="docutils literal notranslate"><span class="pre">master</span></code> when they are ready to be included in the next release.</p>
-<p>The main steps of our git flow are as follows:
-- Feature work and bug fixes are done on branches (external contributors should fork and then work on branches on their fork)
-- Once work is ready for review and inclusion in a release, make a PR from the branch/fork to master on the Mitiq repo. Squash merges are preferred.
-- PRs are then reviewed by the team and the community and then merged into master as appropriate. This means that this feature/fix will be included in the next release.
-- When it is time to make a release, a PR is made from the master branch to the release branch and final automatic testing and manual review is done to make sure it is good to be released.
-- Once the code is ready to be released, the PR from Master to release is approved and a tag is created on release for the appropriate semantic version number.</p>
+<p>The main steps of our git flow are as follows:</p>
+<ul class="simple">
+<li><p>Feature work and bug fixes are done on branches (external contributors should fork and then work on branches on their fork)</p></li>
+<li><p>Once work is ready for review and inclusion in a release, make a PR from the branch/fork to master on the Mitiq repo. Squash merges are preferred.</p></li>
+<li><p>PRs are then reviewed by the team and the community and then merged into master as appropriate. This means that this feature/fix will be included in the next release.</p></li>
+<li><p>When it is time to make a release, a PR is made from the master branch to the release branch and final automatic testing and manual review is done to make sure it is good to be released.</p></li>
+<li><p>Once the code is ready to be released, the PR from Master to release is approved and a tag is created on release for the appropriate semantic version number.</p></li>
+</ul>
 </div>
 <div class="section" id="releasing-a-new-version-of-mitiq">
 <h1>Releasing a new version of Mitiq<a class="headerlink" href="#releasing-a-new-version-of-mitiq" title="Permalink to this headline">#</a></h1>
@@ -336,15 +338,11 @@ instructions of this document to go through all the steps below:</p>
 number.</p>
 <div class="section" id="update-the-changelog">
 <h3><a class="toc-backref" href="#id2">Update the changelog</a><a class="headerlink" href="#update-the-changelog" title="Permalink to this headline">#</a></h3>
-<p>This task has two parts:
-1. Make sure that <code class="docutils literal notranslate"><span class="pre">CHANGELOG.md</span></code> has an entry for each pull request (PR)
-since the last release (PRs). These entries should contain a short description
-of the PR, as well as the author username and PR number in the form
-(&#64;username, gh-xxx).
-2. The release author should add a “Summary” section with a couple sentences
-describing the latest release, and then update the title of the release
-section to include the release date and remove the “In Development”
-designation.</p>
+<p>This task has two parts:</p>
+<ol class="arabic simple">
+<li><p>Make sure that <code class="docutils literal notranslate"><span class="pre">CHANGELOG.md</span></code> has an entry for each pull request (PR) since the last release (PRs). These entries should contain a short description of the PR, as well as the author username and PR number in the form (&#64;username, gh-xxx).</p></li>
+<li><p>The release author should add a “Summary” section with a couple sentences describing the latest release, and then update the title of the release section to include the release date and remove the “In Development” designation.</p></li>
+</ol>
 </div>
 <div class="section" id="bump-version-in-version-txt">
 <h3><a class="toc-backref" href="#id3">Bump version in VERSION.txt</a><a class="headerlink" href="#bump-version-in-version-txt" title="Permalink to this headline">#</a></h3>

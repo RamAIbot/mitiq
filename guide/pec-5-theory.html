@@ -8,7 +8,7 @@ in the top right corner -->
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>What is the theory behind PEC? &#8212; Mitiq 0.15.0dev documentation</title>
+    <title>What is the theory behind PEC? &#8212; Mitiq 0.17.0dev documentation</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -296,6 +296,43 @@ in the top right corner -->
    </li>
   </ul>
  </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="ddd.html">
+   Digital Dynamical Decoupling
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ddd-1-intro.html">
+     How do I use DDD?
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ddd-2-use-case.html">
+     When should I use DDD?
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ddd-3-options.html">
+     What additional options are available when using DDD?
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ddd-4-low-level.html">
+     What happens when I use DDD?
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ddd-5-theory.html">
+     What is the theory behind DDD?
+    </a>
+   </li>
+  </ul>
+ </li>
  <li class="toctree-l1">
   <a class="reference internal" href="error-mitigation.html">
    About Error Mitigation
@@ -363,15 +400,15 @@ in the top right corner -->
                 
   <div class="section" id="what-is-the-theory-behind-pec">
 <h1>What is the theory behind PEC?<a class="headerlink" href="#what-is-the-theory-behind-pec" title="Permalink to this headline">#</a></h1>
-<p>Probabilistic error cancellation (PEC) <span id="id1">[<a class="reference internal" href="../zz_bibliography.html#id33" title="Kristan Temme, Sergey Bravyi, and Jay M. Gambetta. Error mitigation for short-depth quantum circuits. Physical Review Letters, (2017). URL: https://doi.org/10.1103/PhysRevLett.119.180509, doi:10.1103/physrevlett.119.180509.">4</a>, <a class="reference internal" href="../zz_bibliography.html#id31" title="Jinzhao Sun, Xiao Yuan, Takahiro Tsunoda, Vlatko Vedral, Simon C. Benjamin, and Suguru Endo. Mitigating realistic noise in practical noisy intermediate-scale quantum devices. Phys. Rev. Applied, 15:034026, (2021). URL: https://link.aps.org/doi/10.1103/PhysRevApplied.15.034026, doi:10.1103/PhysRevApplied.15.034026.">7</a>, <a class="reference internal" href="../zz_bibliography.html#id29" title="Shuaining Zhang, Yao Lu, Kuan Zhang, Wentao Chen, Ying Li, Jing-Ning Zhang, and Kihwan Kim. Error-mitigated quantum gates exceeding physical fidelities in a trapped-ion system. Nature Communications, (2020). URL: http://dx.doi.org/10.1038/s41467-020-14376-z, doi:10.1038/s41467-020-14376-z.">9</a>]</span>  is a noise-aware error mitigation technique which is
+<p>Probabilistic error cancellation (PEC) <span id="id1">[<a class="reference internal" href="../zz_bibliography.html#id39" title="Kristan Temme, Sergey Bravyi, and Jay M. Gambetta. Error mitigation for short-depth quantum circuits. Physical Review Letters, (2017). URL: https://doi.org/10.1103/PhysRevLett.119.180509, doi:10.1103/physrevlett.119.180509.">4</a>, <a class="reference internal" href="../zz_bibliography.html#id37" title="Jinzhao Sun, Xiao Yuan, Takahiro Tsunoda, Vlatko Vedral, Simon C. Benjamin, and Suguru Endo. Mitigating realistic noise in practical noisy intermediate-scale quantum devices. Phys. Rev. Applied, 15:034026, (2021). URL: https://link.aps.org/doi/10.1103/PhysRevApplied.15.034026, doi:10.1103/PhysRevApplied.15.034026.">7</a>, <a class="reference internal" href="../zz_bibliography.html#id34" title="Shuaining Zhang, Yao Lu, Kuan Zhang, Wentao Chen, Ying Li, Jing-Ning Zhang, and Kihwan Kim. Error-mitigated quantum gates exceeding physical fidelities in a trapped-ion system. Nature Communications, (2020). URL: http://dx.doi.org/10.1038/s41467-020-14376-z, doi:10.1038/s41467-020-14376-z.">9</a>]</span>  is a noise-aware error mitigation technique which is
 based on two main ideas:</p>
 <ul class="simple">
 <li><p>The first idea is to express ideal gates as linear combinations of implementable noisy gates.
-These linear combinations are called quasi-probability representations <span id="id2">[<a class="reference internal" href="../zz_bibliography.html#id26" title="Hakop Pashayan, Joel J. Wallman, and Stephen D. Bartlett. Estimating outcome probabilities of quantum circuits using quasiprobabilities. Phys. Rev. Lett., 115:070501, (2015). URL: https://link.aps.org/doi/10.1103/PhysRevLett.115.070501, doi:10.1103/PhysRevLett.115.070501.">10</a>]</span>;</p></li>
+These linear combinations are called quasi-probability representations <span id="id2">[<a class="reference internal" href="../zz_bibliography.html#id30" title="Hakop Pashayan, Joel J. Wallman, and Stephen D. Bartlett. Estimating outcome probabilities of quantum circuits using quasiprobabilities. Phys. Rev. Lett., 115:070501, (2015). URL: https://link.aps.org/doi/10.1103/PhysRevLett.115.070501, doi:10.1103/PhysRevLett.115.070501.">10</a>]</span>;</p></li>
 <li><p>The second idea is to probabilistically sample from the previous quasi-probability representations to approximate
 quantum expectation values via a Monte Carlo average.</p></li>
 </ul>
-<p><em><em>Note:</em> In this section we follow the same notation of <span id="id3">[<a class="reference internal" href="../zz_bibliography.html#id19" title="Andrea Mari, Nathan Shammah, and William J. Zeng. Extending quantum probabilistic error cancellation by noise scaling. Phys. Rev. A, 104:052607, (2021). URL: https://link.aps.org/doi/10.1103/PhysRevA.104.052607, doi:10.1103/PhysRevA.104.052607.">1</a>]</span>.</em></p>
+<p><em><em>Note:</em> In this section we follow the same notation of <span id="id3">[<a class="reference internal" href="../zz_bibliography.html#id23" title="Andrea Mari, Nathan Shammah, and William J. Zeng. Extending quantum probabilistic error cancellation by noise scaling. Phys. Rev. A, 104:052607, (2021). URL: https://link.aps.org/doi/10.1103/PhysRevA.104.052607, doi:10.1103/PhysRevA.104.052607.">1</a>]</span>.</em></p>
 <div class="section" id="quasi-probability-representations">
 <h2>Quasi-probability representations<a class="headerlink" href="#quasi-probability-representations" title="Permalink to this headline">#</a></h2>
 <p>In PEC, each ideal gate <span class="math notranslate nohighlight">\(\mathcal G_i\)</span> of a circuit of interest
@@ -385,7 +422,7 @@ can be directly applied with a noisy backend):</p>
 \]</div>
 <p>where the calligraphic symbols (<span class="math notranslate nohighlight">\(\mathcal U\)</span>, <span class="math notranslate nohighlight">\(\mathcal G_i\)</span>, <span class="math notranslate nohighlight">\(\mathcal O_{i, \alpha}\)</span>) stand for super-operators acting
 on the density matrix of the qubits as linear quantum channels.</p>
-<p>The real coefficients <span class="math notranslate nohighlight">\({\eta_{i,\alpha}}\)</span> form a quasi-probability distribution <span id="id4">[<a class="reference internal" href="../zz_bibliography.html#id26" title="Hakop Pashayan, Joel J. Wallman, and Stephen D. Bartlett. Estimating outcome probabilities of quantum circuits using quasiprobabilities. Phys. Rev. Lett., 115:070501, (2015). URL: https://link.aps.org/doi/10.1103/PhysRevLett.115.070501, doi:10.1103/PhysRevLett.115.070501.">10</a>]</span> with respect to the
+<p>The real coefficients <span class="math notranslate nohighlight">\({\eta_{i,\alpha}}\)</span> form a quasi-probability distribution <span id="id4">[<a class="reference internal" href="../zz_bibliography.html#id30" title="Hakop Pashayan, Joel J. Wallman, and Stephen D. Bartlett. Estimating outcome probabilities of quantum circuits using quasiprobabilities. Phys. Rev. Lett., 115:070501, (2015). URL: https://link.aps.org/doi/10.1103/PhysRevLett.115.070501, doi:10.1103/PhysRevLett.115.070501.">10</a>]</span> with respect to the
 index <span class="math notranslate nohighlight">\(\alpha\)</span>. Their sum is normalized but, differently from standard probabilities, they can take negative values:</p>
 <div class="math notranslate nohighlight">
 \[ \sum_\alpha \eta_{i,\alpha}=1,  \qquad  \gamma_i = \sum_\alpha |\eta_{i, \alpha}| \ge 1.\]</div>
@@ -458,7 +495,7 @@ As a direct consequence, we can express the ideal expectation value as follows:<
 <p>By averaging a finite number <span class="math notranslate nohighlight">\(N\)</span> of samples we obtain an unbiased estimate of <span class="math notranslate nohighlight">\(\langle A \rangle_{\text{ideal}}\)</span>.
 Assuming a bounded observable <span class="math notranslate nohighlight">\(|A|\le 1\)</span>, the number of samples <span class="math notranslate nohighlight">\(N\)</span>
 necessary to approximate <span class="math notranslate nohighlight">\(\langle A\rangle_{\text{ideal}}\)</span> within an absolute error <span class="math notranslate nohighlight">\(\delta\)</span>,
-scales as <span id="id5">[<a class="reference internal" href="../zz_bibliography.html#id32" title="Ryuji Takagi. Optimal resource cost for error mitigation. Physical Review Research, (2021). URL: http://dx.doi.org/10.1103/PhysRevResearch.3.033178, doi:10.1103/physrevresearch.3.033178.">8</a>]</span>:</p>
+scales as <span id="id5">[<a class="reference internal" href="../zz_bibliography.html#id38" title="Ryuji Takagi. Optimal resource cost for error mitigation. Physical Review Research, (2021). URL: http://dx.doi.org/10.1103/PhysRevResearch.3.033178, doi:10.1103/physrevresearch.3.033178.">8</a>]</span>:</p>
 <div class="math notranslate nohighlight">
 \[ N \propto \frac{\gamma^2}{\delta^2}. \]</div>
 <p>The term <span class="math notranslate nohighlight">\(\delta^2\)</span> in the denominator is due to the stochastic nature of quantum measurements

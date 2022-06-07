@@ -8,7 +8,7 @@ in the top right corner -->
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>What additional options are available in CDR? &#8212; Mitiq 0.15.0dev documentation</title>
+    <title>What additional options are available in CDR? &#8212; Mitiq 0.17.0dev documentation</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -294,6 +294,43 @@ in the top right corner -->
    </li>
   </ul>
  </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="ddd.html">
+   Digital Dynamical Decoupling
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ddd-1-intro.html">
+     How do I use DDD?
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ddd-2-use-case.html">
+     When should I use DDD?
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ddd-3-options.html">
+     What additional options are available when using DDD?
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ddd-4-low-level.html">
+     What happens when I use DDD?
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ddd-5-theory.html">
+     What is the theory behind DDD?
+    </a>
+   </li>
+  </ul>
+ </li>
  <li class="toctree-l1">
   <a class="reference internal" href="error-mitigation.html">
    About Error Mitigation
@@ -400,7 +437,7 @@ in the top right corner -->
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.0351411879515047
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.0252437568826054
 </pre></div>
 </div>
 </div>
@@ -422,7 +459,7 @@ in the top right corner -->
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.0336192292149817
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.0312591619714098
 </pre></div>
 </div>
 </div>
@@ -432,7 +469,7 @@ the user could also define other custom functions.</p>
 </div>
 <div class="section" id="variable-noise-cdr">
 <h2>Variable noise CDR<a class="headerlink" href="#variable-noise-cdr" title="Permalink to this headline">#</a></h2>
-<p>The <code class="docutils literal notranslate"><span class="pre">circuit</span></code> and the associated training circuits can also be run at different noise scale factors to implement <a class="reference external" href="https://arxiv.org/abs/2011.01157">variable noise Clifford data regression</a> <span id="id1">[<a class="reference internal" href="../zz_bibliography.html#id18" title="Angus Lowe, Max Hunter Gordon, Piotr Czarnik, Andrew Arrasmith, Patrick J. Coles, and Lukasz Cincio. Unified approach to data-driven quantum error mitigation. Phys. Rev. Research, 3:033098, (2021). URL: https://link.aps.org/doi/10.1103/PhysRevResearch.3.033098, doi:10.1103/PhysRevResearch.3.033098.">2</a>]</span>.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">circuit</span></code> and the associated training circuits can also be run at different noise scale factors to implement <a class="reference external" href="https://arxiv.org/abs/2011.01157">variable noise Clifford data regression</a> <span id="id1">[<a class="reference internal" href="../zz_bibliography.html#id22" title="Angus Lowe, Max Hunter Gordon, Piotr Czarnik, Andrew Arrasmith, Patrick J. Coles, and Lukasz Cincio. Unified approach to data-driven quantum error mitigation. Phys. Rev. Research, 3:033098, (2021). URL: https://link.aps.org/doi/10.1103/PhysRevResearch.3.033098, doi:10.1103/PhysRevResearch.3.033098.">2</a>]</span>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">mitiq.zne</span> <span class="kn">import</span> <span class="n">scaling</span>
@@ -449,7 +486,7 @@ the user could also define other custom functions.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.0294323084925934
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.0302496119713056
 </pre></div>
 </div>
 </div>
