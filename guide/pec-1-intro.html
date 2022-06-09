@@ -461,9 +461,9 @@ identity operation.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   ┌────┐┌───────┐┌──────────┐┌───────┐┌─────────┐┌──────┐
-q: ┤ √X ├┤ Ry(0) ├┤ Ry(-π/2) ├┤ Rx(0) ├┤ Ry(π/2) ├┤ √Xdg ├
-   └────┘└───────┘└──────────┘└───────┘└─────────┘└──────┘
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   ┌───┐┌───────┐┌───────┐┌───┐┌───────┐
+q: ┤ Y ├┤ Rx(0) ├┤ Rx(0) ├┤ Y ├┤ Rx(0) ├
+   └───┘└───────┘└───────┘└───┘└───────┘
 </pre></div>
 </div>
 </div>
@@ -504,7 +504,7 @@ representation (Cirq) and then simulate it.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Error without mitigation: 0.03869
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Error without mitigation: 0.03246
 </pre></div>
 </div>
 </div>
@@ -549,7 +549,7 @@ numerical optimization problems <span id="id3">[<a class="reference internal" hr
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>6 OperationRepresentation objects produced, assuming 1.0% depolarizing noise.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2 OperationRepresentation objects produced, assuming 1.0% depolarizing noise.
 </pre></div>
 </div>
 </div>
@@ -562,7 +562,7 @@ numerical optimization problems <span id="id3">[<a class="reference internal" hr
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>q_0: ───Ry(0)─── = 1.010*(q_0: ───Ry(0)───)-0.003*(q_0: ───Ry(0)───X───)-0.003*(q_0: ───Ry(0)───Y───)-0.003*(q_0: ───Ry(0)───Z───)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>q_0: ───Rx(0)─── = 1.010*(q_0: ───Rx(0)───)-0.003*(q_0: ───Rx(0)───X───)-0.003*(q_0: ───Rx(0)───Y───)-0.003*(q_0: ───Rx(0)───Z───)
 </pre></div>
 </div>
 </div>
@@ -587,8 +587,8 @@ probabilistic error cancellation can be applied through the <a class="reference 
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Error without PEC: 0.03869
-Error with PEC:    0.01070
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Error without PEC: 0.03246
+Error with PEC:    0.00501
 </pre></div>
 </div>
 </div>
